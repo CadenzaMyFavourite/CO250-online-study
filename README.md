@@ -4,7 +4,7 @@ A static, local-first study platform derived from the CO 250 PDFs in `materials/
 
 ## Privacy model
 
-- No account, telemetry, analytics, advertising, or runtime network calls.
+- No student account, advertising, or third-party tracking. The public deployment uses Vercel Web Analytics for anonymized, cookie-free page-view analytics.
 - Course materials are read only by the local inventory script.
 - PDFs are excluded from Git by `.gitignore`.
 - Progress is stored under `co250-field-guide-progress-v1` in browser `localStorage`.
@@ -38,6 +38,8 @@ This is a client-only Vite application. It requires no database, API, environmen
 The root `vercel.json` rewrites application routes to `index.html`, so direct visits and browser refreshes work on routes such as `/topic/two-phase-simplex`. Future pushes to `main` create production deployments automatically after the Git integration is connected.
 
 Study progress and exam drafts remain in `localStorage`. They survive refreshes in the same browser, but do not synchronize between devices or browser profiles.
+
+Vercel Web Analytics is integrated through `@vercel/analytics/react`. Enable Web Analytics in the Vercel project dashboard; its collection route becomes active on the next deployment.
 
 ## Commands
 
