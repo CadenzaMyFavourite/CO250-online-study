@@ -1,0 +1,490 @@
+{
+  "metadata": {
+    "scope": "Concise worked examples adapted from the supplied textbook concepts.",
+    "authority": "Textbook-first; examples are newly worded and mathematically checked.",
+    "exampleCount": 21
+  },
+  "examples": [
+    {
+      "id": "example-binary-capacity",
+      "unitId": "unit-02",
+      "title": "Link a binary choice to production",
+      "prompt": "A line can produce at most 80 units, but production must be zero unless the line is opened. Opening costs 200 and each unit contributes 5. Formulate the decision.",
+      "promptLatex": "x\\ge0,\\qquad y\\in\\{0,1\\}",
+      "steps": [
+        "Let x be production and let y equal one exactly when the line is opened.",
+        "Link the continuous quantity to the binary choice. Substituting y=0 must force x=0; y=1 may permit the full capacity.",
+        "Subtract the fixed opening cost in the objective."
+      ],
+      "stepsLatex": [
+        "x\\ge0,\\qquad y\\in\\{0,1\\}",
+        "0\\le x\\le80y",
+        "\\max\\;5x-200y"
+      ],
+      "finalAnswer": "The binary meaning is enforced by the linking constraint, not by prose alone.",
+      "finalAnswerLatex": "\\max\\{5x-200y:0\\le x\\le80y,\\ y\\in\\{0,1\\}\\}",
+      "textbookSection": "1.3",
+      "textbookPage": 38
+    },
+    {
+      "id": "example-unbounded-certificate",
+      "unitId": "unit-03",
+      "title": "Verify an unbounded ray",
+      "prompt": "Show that the SEF maximization problem is unbounded by giving a feasible base point and improving direction.",
+      "promptLatex": "\\max\\{x_1+x_2:x_1-x_2=1,\\ x_1,x_2\\ge0\\}",
+      "steps": [
+        "Choose a feasible point and check the equality and nonnegativity.",
+        "Choose a nonnegative direction that preserves the equality.",
+        "Check that the direction strictly improves the maximization objective.",
+        "Conclude that the entire ray remains feasible and its value tends to infinity."
+      ],
+      "stepsLatex": [
+        "\\bar x=(1,0)^{\\mathsf T},\\qquad A\\bar x=1,\\quad\\bar x\\ge0",
+        "d=(1,1)^{\\mathsf T},\\qquad Ad=(1,-1)d=0,\\quad d\\ge0",
+        "c^{\\mathsf T}d=(1,1)d=2>0",
+        "\\bar x+td=(1+t,t)^{\\mathsf T}\\quad(t\\ge0),\\qquad c^{\\mathsf T}(\\bar x+td)=1+2t\\to\\infty"
+      ],
+      "finalAnswer": "The pair (x-bar,d) is a certificate of unboundedness.",
+      "finalAnswerLatex": "\\bar x=(1,0)^{\\mathsf T},\\qquad d=(1,1)^{\\mathsf T}",
+      "textbookSection": "2.1.2",
+      "textbookPage": 84
+    },
+    {
+      "id": "example-sef-conversion",
+      "unitId": "unit-04",
+      "title": "Convert a free-variable minimization to SEF",
+      "prompt": "Convert the model to the course standard equality form.",
+      "promptLatex": "\\min\\{2z-x:z+x\\ge3,\\ x\\ge0,\\ z\\text{ free}\\}",
+      "steps": [
+        "Replace the free variable by the difference of two nonnegative variables.",
+        "Negate the minimization objective to obtain a maximization objective.",
+        "Subtract a nonnegative slack variable from the ≥ constraint.",
+        "Check that every remaining constraint is an equality and every variable is nonnegative."
+      ],
+      "stepsLatex": [
+        "z=z^+-z^-,\\qquad z^+,z^-\\ge0",
+        "\\min(2z-x)\\equiv\\max(-2z^++2z^-+x)",
+        "z^+-z^-+x-s=3,\\qquad s\\ge0",
+        "x,z^+,z^-,s\\ge0"
+      ],
+      "finalAnswer": "The transformed LP is equivalent to the original and is in SEF.",
+      "finalAnswerLatex": "\\max\\{-2z^++2z^-+x:z^+-z^-+x-s=3,\\ x,z^+,z^-,s\\ge0\\}",
+      "textbookSection": "2.2",
+      "textbookPage": 91
+    },
+    {
+      "id": "example-simplex-pivot",
+      "unitId": "unit-05",
+      "title": "Choose entering and leaving variables",
+      "prompt": "Starting from the slack basis, perform the ratio-test part of one simplex iteration.",
+      "promptLatex": "\\begin{aligned}\\max\\;&3x_1+2x_2\\\\\\text{s.t. }&x_1+x_2+x_3=4,\\\\&2x_1+x_2+x_4=5,\\qquad x\\ge0.\\end{aligned}",
+      "steps": [
+        "The slack basis gives the initial basic feasible solution.",
+        "Choose x1 to enter because its objective coefficient is positive.",
+        "Apply the minimum-ratio test using only positive entries in the entering column.",
+        "Increase x1 to the limiting value and read the new basic feasible solution."
+      ],
+      "stepsLatex": [
+        "B=\\{3,4\\},\\qquad\\bar x=(0,0,4,5)^{\\mathsf T}",
+        "k=1,\\qquad\\bar c_1=3>0",
+        "\\min\\left\\{\\frac41,\\frac52\\right\\}=\\frac52\\quad\\Longrightarrow\\quad x_4\\text{ leaves}",
+        "x'=(5/2,0,3/2,0)^{\\mathsf T},\\qquad c^{\\mathsf T}x'=15/2"
+      ],
+      "finalAnswer": "x1 enters and x4 leaves; the objective increases from 0 to 15/2.",
+      "finalAnswerLatex": "B'=\\{1,3\\},\\qquad x'=(5/2,0,3/2,0)^{\\mathsf T}",
+      "textbookSection": "2.5.3",
+      "textbookPage": 114
+    },
+    {
+      "id": "example-phase-one",
+      "unitId": "unit-06",
+      "title": "Build a Phase I auxiliary LP",
+      "prompt": "Find a feasible solution by constructing an auxiliary LP.",
+      "promptLatex": "\\max\\{x_1+x_2:x_1-x_2=-1,\\ x_1+x_2=3,\\ x\\ge0\\}",
+      "steps": [
+        "Make every right-hand side nonnegative.",
+        "Add one auxiliary variable to each equality to create an identity basis.",
+        "Maximize the negative sum of the auxiliary variables.",
+        "Drive the auxiliary variables to zero and recover a feasible point of the original LP."
+      ],
+      "stepsLatex": [
+        "-x_1+x_2=1,\\qquad x_1+x_2=3",
+        "-x_1+x_2+u_1=1,\\qquad x_1+x_2+u_2=3",
+        "\\max\\;(-u_1-u_2),\\qquad x,u\\ge0",
+        "x_1=1,\\quad x_2=2,\\quad u_1=u_2=0,\\quad v(Q)=0"
+      ],
+      "finalAnswer": "Phase I attains zero, so the original LP is feasible and Phase II can start from x=(1,2).",
+      "finalAnswerLatex": "\\bar x=(1,2)^{\\mathsf T}",
+      "textbookSection": "2.6.2",
+      "textbookPage": 128
+    },
+    {
+      "id": "example-extreme-rank",
+      "unitId": "unit-07",
+      "title": "Recognize an extreme point by tight-constraint rank",
+      "prompt": "Use the tight constraints to decide whether the candidate is an extreme point.",
+      "promptLatex": "P=\\{x\\in\\mathbb{R}^2:x_1\\ge0,\\ x_2\\ge0,\\ x_1+x_2\\le4\\},\\qquad\\bar x=(0,4)^{\\mathsf T}",
+      "steps": [
+        "Write the inequalities in Ax≤b form.",
+        "Identify the constraints that hold with equality at the candidate.",
+        "Compute the rank of the tight normal vectors.",
+        "Compare the rank with the ambient dimension."
+      ],
+      "stepsLatex": [
+        "-x_1\\le0,\\qquad-x_2\\le0,\\qquad x_1+x_2\\le4",
+        "-\\bar x_1=0,\\qquad\\bar x_1+\\bar x_2=4",
+        "\\operatorname{rank}\\begin{pmatrix}-1&0\\\\1&1\\end{pmatrix}=2",
+        "\\operatorname{rank}(\\bar A)=2=n"
+      ],
+      "finalAnswer": "The tight normals span R^2, so the candidate is an extreme point.",
+      "finalAnswerLatex": "\\bar x=(0,4)^{\\mathsf T}\\text{ is an extreme point of }P",
+      "textbookSection": "2.8.3",
+      "textbookPage": 144
+    },
+    {
+      "id": "example-dual-pair",
+      "unitId": "unit-08",
+      "title": "Construct a dual and match objective values",
+      "prompt": "Write the dual of the primal maximization LP and verify a matching feasible pair.",
+      "promptLatex": "(P):\\max\\{3x_1+2x_2:x_1+x_2\\le4,\\ 2x_1+x_2\\le5,\\ x\\ge0\\}",
+      "steps": [
+        "Create one nonnegative dual variable for each primal ≤ constraint.",
+        "Create one ≥ dual constraint for each nonnegative primal variable.",
+        "Check primal and dual feasibility of the candidate pair.",
+        "Compare their objective values."
+      ],
+      "stepsLatex": [
+        "y_1,y_2\\ge0",
+        "(D):\\min\\{4y_1+5y_2:y_1+2y_2\\ge3,\\ y_1+y_2\\ge2,\\ y\\ge0\\}",
+        "\\bar x=(1,3)^{\\mathsf T},\\qquad\\bar y=(1,1)^{\\mathsf T}",
+        "c^{\\mathsf T}\\bar x=9=b^{\\mathsf T}\\bar y"
+      ],
+      "finalAnswer": "Weak duality plus equal feasible values proves both candidates optimal.",
+      "finalAnswerLatex": "v(P)=v(D)=9",
+      "textbookSection": "4.1",
+      "textbookPage": 219
+    },
+    {
+      "id": "example-cs-check",
+      "unitId": "unit-09",
+      "title": "Check complementary slackness",
+      "prompt": "Verify complementary slackness for the feasible primal–dual pair from the preceding duality example.",
+      "promptLatex": "\\bar x=(1,3)^{\\mathsf T},\\qquad\\bar y=(1,1)^{\\mathsf T}",
+      "steps": [
+        "Because both primal variables are positive, both corresponding dual constraints must be tight.",
+        "Because both dual variables are positive, both corresponding primal constraints must be tight.",
+        "Evaluate the four equalities.",
+        "Use the complementary-slackness theorem after feasibility has been checked."
+      ],
+      "stepsLatex": [
+        "\\bar x_1,\\bar x_2>0\\implies A^{\\mathsf T}\\bar y=c",
+        "\\bar y_1,\\bar y_2>0\\implies A\\bar x=b",
+        "A^{\\mathsf T}\\bar y=(3,2)^{\\mathsf T}=c,\\qquad A\\bar x=(4,5)^{\\mathsf T}=b",
+        "\\bar x_j((A^{\\mathsf T}\\bar y)_j-c_j)=0,\\qquad\\bar y_i(b_i-(A\\bar x)_i)=0"
+      ],
+      "finalAnswer": "All CS products vanish, so both feasible candidates are optimal.",
+      "finalAnswerLatex": "\\bar x\\text{ and }\\bar y\\text{ satisfy complementary slackness}"
+      ,"textbookSection": "4.3.1",
+      "textbookPage": 238
+    },
+    {
+      "id": "example-integer-cut",
+      "unitId": "unit-10",
+      "title": "Derive a valid cut from integrality",
+      "prompt": "Solve the LP relaxation conceptually and derive a valid inequality that removes its fractional optimum.",
+      "promptLatex": "\\max\\{x_1+x_2:2x_1+x_2\\le4,\\ x_1+2x_2\\le4,\\ x\\in\\mathbb{Z}_{\\ge0}^2\\}",
+      "steps": [
+        "Drop integrality and intersect the two active constraint boundaries.",
+        "Add the two inequalities to bound three times the integer objective sum.",
+        "Use integrality to round the implied right-hand side down.",
+        "Verify that the fractional LP optimum violates the new inequality while every integer-feasible point satisfies it."
+      ],
+      "stepsLatex": [
+        "x^*=(4/3,4/3)^{\\mathsf T},\\qquad z_{LP}=8/3",
+        "3x_1+3x_2\\le8\\quad\\Longrightarrow\\quad x_1+x_2\\le8/3",
+        "x_1+x_2\\in\\mathbb{Z}\\quad\\Longrightarrow\\quad x_1+x_2\\le2",
+        "8/3>2"
+      ],
+      "finalAnswer": "The cut x1+x2≤2 is valid for the IP and removes the fractional LP optimum.",
+      "finalAnswerLatex": "x_1+x_2\\le2",
+      "textbookSection": "6.2",
+      "textbookPage": 288
+    },
+    {
+      "id": "example-kkt-unit-disk",
+      "unitId": "unit-11",
+      "title": "Certify a convex optimum with KKT",
+      "prompt": "Use the course KKT condition to prove the candidate optimal.",
+      "promptLatex": "\\min\\{-x_1-x_2:x_1^2+x_2^2-1\\le0\\},\\qquad\\bar x=(1/\\sqrt2,1/\\sqrt2)^{\\mathsf T}",
+      "steps": [
+        "Check convexity, differentiability, and candidate feasibility.",
+        "Exhibit a Slater point satisfying the inequality strictly.",
+        "Identify the tight constraint and compute its gradient at the candidate.",
+        "Express the negative objective vector as a nonnegative multiple of that tight gradient."
+      ],
+      "stepsLatex": [
+        "\\begin{gathered}g(x)=x_1^2+x_2^2-1\\text{ is convex and differentiable},\\\\g(\\bar x)=0.\\end{gathered}",
+        "g(0,0)=-1<0",
+        "\\nabla g(\\bar x)=(\\sqrt2,\\sqrt2)^{\\mathsf T}",
+        "-c=(1,1)^{\\mathsf T}=\\frac1{\\sqrt2}\\nabla g(\\bar x),\\qquad\\frac1{\\sqrt2}\\ge0"
+      ],
+      "finalAnswer": "All KKT assumptions and the cone condition hold, so the candidate is globally optimal.",
+      "finalAnswerLatex": "\\bar x=(1/\\sqrt2,1/\\sqrt2)^{\\mathsf T},\\qquad f(\\bar x)=-\\sqrt2",
+      "textbookSection": "7.5.3",
+      "textbookPage": 333
+    },
+    {
+      "id": "example-simplex-stop",
+      "unitId": "unit-05",
+      "title": "Know when simplex is finished",
+      "prompt": "A bakery has already performed a few pivots. Use the current canonical form to decide whether another pivot can improve profit.",
+      "promptLatex": "\\begin{aligned}\\max\\;z&=18-x_3-2x_4\\\\x_1+x_3&=4\\\\x_2+x_4&=3\\\\x&\\ge0.\\end{aligned}",
+      "steps": [
+        "Start with the nonbasic variables x3 and x4 equal to zero.",
+        "Read the current basic solution and its profit directly from the canonical equations.",
+        "Look at what happens if either nonbasic variable increases.",
+        "Because every allowed increase can only lower profit, stop."
+      ],
+      "stepsLatex": [
+        "x_3=x_4=0",
+        "\\bar x=(4,3,0,0)^{\\mathsf T},\\qquad z(\\bar x)=18",
+        "\\bar c_3=-1\\le0,\\qquad\\bar c_4=-2\\le0",
+        "z(x)=18-x_3-2x_4\\le18"
+      ],
+      "finalAnswer": "The current solution is optimal. In plain language: every remaining move makes the bakery earn less, so simplex should stop.",
+      "finalAnswerLatex": "\\bar x=(4,3,0,0)^{\\mathsf T}\\text{ is optimal}",
+      "textbookSection": "2.5.3",
+      "textbookPage": 113
+    },
+    {
+      "id": "example-dual-resource-prices",
+      "unitId": "unit-08",
+      "title": "Interpret dual variables as resource prices",
+      "prompt": "A workshop makes two products. Build the dual and use resource prices to prove that producing two of each product is optimal.",
+      "promptLatex": "(P):\\max\\{3x_1+2x_2:x_1+x_2\\le4,\\ x_1\\le2,\\ x\\ge0\\}",
+      "steps": [
+        "Give each resource constraint a nonnegative price: y1 for the shared capacity and y2 for the x1 limit.",
+        "Require the priced resources used by each product to cover that product's profit.",
+        "Check that producing x=(2,2) is feasible and earns 10.",
+        "Check that prices y=(2,1) are dual feasible and value all available resources at 10."
+      ],
+      "stepsLatex": [
+        "y_1,y_2\\ge0",
+        "(D):\\min\\{4y_1+2y_2:y_1+y_2\\ge3,\\ y_1\\ge2\\}",
+        "\\bar x=(2,2)^{\\mathsf T},\\qquad c^{\\mathsf T}\\bar x=10",
+        "\\bar y=(2,1)^{\\mathsf T},\\qquad b^{\\mathsf T}\\bar y=4(2)+2(1)=10"
+      ],
+      "finalAnswer": "The production plan and the resource-price plan meet at value 10. Weak duality says neither side can do better, so both are optimal.",
+      "finalAnswerLatex": "v(P)=v(D)=10",
+      "textbookSection": "4.1",
+      "textbookPage": 219
+    },
+    {
+      "id": "example-cs-unused-resource",
+      "unitId": "unit-09",
+      "title": "See why an unused resource has zero dual price",
+      "prompt": "At the proposed optimum, the third capacity has one unused unit. Use complementary slackness to explain why its dual price is zero.",
+      "promptLatex": "\\begin{aligned}(P):\\max\\;&3x_1+2x_2\\\\x_1+x_2&\\le4\\\\x_1&\\le2\\\\x_2&\\le3,\\qquad x\\ge0.\\end{aligned}",
+      "steps": [
+        "Evaluate the constraints at x=(2,2). The first two are full, while the third has one unit left.",
+        "Use y=(2,1,0) for the three resource prices.",
+        "Multiply each resource price by its unused amount.",
+        "Because both products are made in positive amounts, also check that both dual constraints are tight."
+      ],
+      "stepsLatex": [
+        "b-A\\bar x=(0,0,1)^{\\mathsf T}",
+        "\\bar y=(2,1,0)^{\\mathsf T}",
+        "\\bar y\\odot(b-A\\bar x)=(0,0,0)^{\\mathsf T}",
+        "A^{\\mathsf T}\\bar y-c=(0,0)^{\\mathsf T}"
+      ],
+      "finalAnswer": "The unused third capacity has price zero. If one more unit is already unnecessary, it should not improve the optimal value.",
+      "finalAnswerLatex": "\\bar y_3=0\\quad\\text{when}\\quad b_3-a_3^{\\mathsf T}\\bar x=1",
+      "textbookSection": "4.3.1",
+      "textbookPage": 238
+    },
+    {
+      "id": "example-cut-boxes",
+      "unitId": "unit-10",
+      "title": "Cut off a half-box solution",
+      "prompt": "A warehouse has 5 kg of material. Every complete box uses 2 kg. The LP relaxation allows 2.5 boxes; derive the integer cut.",
+      "promptLatex": "\\max\\{x_1+x_2:2x_1+2x_2\\le5,\\ x_1,x_2\\in\\mathbb Z_{\\ge0}\\}",
+      "steps": [
+        "First ignore integrality. Dividing the capacity constraint by two allows a total of at most 2.5 boxes.",
+        "Remember that the total number of complete boxes is an integer.",
+        "Round the upper bound down from 2.5 to 2.",
+        "The new inequality removes fractional totals but keeps every feasible whole-box plan."
+      ],
+      "stepsLatex": [
+        "x_1+x_2\\le\\frac52",
+        "x_1+x_2\\in\\mathbb Z",
+        "x_1+x_2\\le\\left\\lfloor\\frac52\\right\\rfloor=2",
+        "\\{x\\in\\mathbb Z_{\\ge0}^2:2x_1+2x_2\\le5\\}\\subseteq\\{x:x_1+x_2\\le2\\}"
+      ],
+      "finalAnswer": "Add x1+x2≤2. It says the obvious real-world fact: 5 kg cannot make three complete 2 kg boxes.",
+      "finalAnswerLatex": "x_1+x_2\\le2",
+      "textbookSection": "6.2",
+      "textbookPage": 288
+    },
+    {
+      "id": "example-kkt-machine-output",
+      "unitId": "unit-11",
+      "title": "Maximize safe machine output with KKT",
+      "prompt": "A machine's output is x. Minimizing -x means we want as much output as possible, but the safety rule is x²≤4. Verify that x=2 is globally optimal.",
+      "promptLatex": "\\min\\{-x:x^2-4\\le0\\},\\qquad\\bar x=2",
+      "steps": [
+        "Translate the model: a smaller value of -x means a larger output x.",
+        "Check the assumptions. The safety function is convex and differentiable, and x=0 is strictly safe.",
+        "At x=2 the safety constraint is tight, and its gradient points outward with value 4.",
+        "Show that the direction opposing the objective is a nonnegative multiple of that tight gradient."
+      ],
+      "stepsLatex": [
+        "c=-1",
+        "g(x)=x^2-4,\\qquad g(0)=-4<0",
+        "g(2)=0,\\qquad\\nabla g(2)=4",
+        "-c=1=\\frac14\\nabla g(2),\\qquad\\frac14\\ge0"
+      ],
+      "finalAnswer": "KKT certifies x=2. In everyday terms: output cannot exceed 2 without breaking the safety limit.",
+      "finalAnswerLatex": "\\bar x=2,\\qquad f(\\bar x)=-2",
+      "textbookSection": "7.5.3",
+      "textbookPage": 333
+    },
+    {
+      "id": "example-formulate-gift-bags",
+      "unitId": "unit-01",
+      "title": "Plan standard and premium gift bags",
+      "prompt": "A fundraiser earns $4 per standard gift bag and $7 per premium bag. Standard bags use one packing unit, premium bags use two, 40 units are available, and at most 12 premium bags can be sold. Formulate the LP.",
+      "promptLatex": "\\begin{aligned}\\max\\;&4s+7p\\\\\\text{s.t. }&s+2p\\le40,\\\\&p\\le12,\\\\&s,p\\ge0.\\end{aligned}",
+      "steps": [
+        "Choose variables with units: s is the number of standard bags and p is the number of premium bags.",
+        "Turn earnings into the objective: each standard bag adds $4 and each premium bag adds $7.",
+        "Turn the packing and demand limits into inequalities.",
+        "Add nonnegativity because a negative number of bags has no real meaning."
+      ],
+      "stepsLatex": [
+        "s=\\#\\text{ standard bags},\\qquad p=\\#\\text{ premium bags}",
+        "\\max\\;4s+7p",
+        "s+2p\\le40,\\qquad p\\le12",
+        "s,p\\ge0"
+      ],
+      "finalAnswer": "The model chooses bag counts, maximizes fundraising earnings, and respects packing capacity and premium demand.",
+      "finalAnswerLatex": "\\max\\{4s+7p:s+2p\\le40,\\ p\\le12,\\ s,p\\ge0\\}",
+      "textbookSection": "1.1.2",
+      "textbookPage": 20
+    },
+    {
+      "id": "example-quadratic-battery-load",
+      "unitId": "unit-02",
+      "title": "Split battery load to reduce heat",
+      "prompt": "Two battery modules must supply a total load of 10. Heat loss in each module is the square of its load. Classify and solve the model.",
+      "promptLatex": "\\min\\{x_1^2+x_2^2:x_1+x_2\\ge10,\\ x_1,x_2\\ge0\\}",
+      "steps": [
+        "The squared terms make the objective quadratic, so this is not an LP.",
+        "At the minimum we use exactly the required total load; extra load would only increase heat.",
+        "For a fixed total, unequal loads add the nonnegative penalty (x1-x2)².",
+        "Therefore the lowest-heat choice splits the load evenly."
+      ],
+      "stepsLatex": [
+        "f(x)=x_1^2+x_2^2\\text{ is quadratic}",
+        "x_1+x_2=10",
+        "2(x_1^2+x_2^2)=(x_1+x_2)^2+(x_1-x_2)^2\\ge100",
+        "x_1=x_2=5,\\qquad f(x)=50"
+      ],
+      "finalAnswer": "This is a convex quadratic optimization problem. The practical lesson is simple: sharing the load evenly minimizes heat.",
+      "finalAnswerLatex": "x^*=(5,5)^{\\mathsf T},\\qquad v=50",
+      "textbookSection": "1.6",
+      "textbookPage": 74
+    },
+    {
+      "id": "example-infeasible-shift",
+      "unitId": "unit-03",
+      "title": "Spot an impossible staffing requirement",
+      "prompt": "A schedule says at least 5 workers are required but at most 3 are available. Prove the model is infeasible.",
+      "promptLatex": "x\\ge5,\\qquad x\\le3",
+      "steps": [
+        "Rewrite the lower bound with the same less-than-or-equal direction as the upper bound.",
+        "Add the two valid inequalities.",
+        "The variable cancels and leaves an impossible numerical statement.",
+        "That contradiction is a short certificate that no x can satisfy both rules."
+      ],
+      "stepsLatex": [
+        "-x\\le-5,\\qquad x\\le3",
+        "(-x)+x\\le-5+3",
+        "0\\le-2",
+        "S=\\varnothing"
+      ],
+      "finalAnswer": "The schedule is infeasible: one number cannot be at least 5 and at most 3.",
+      "finalAnswerLatex": "\\{x:x\\ge5,\\ x\\le3\\}=\\varnothing",
+      "textbookSection": "2.1.1",
+      "textbookPage": 82
+    },
+    {
+      "id": "example-slack-workshop-hours",
+      "unitId": "unit-04",
+      "title": "Turn unused workshop time into a slack variable",
+      "prompt": "Two products use a shared 8-hour workshop capacity. Convert the capacity inequality to standard equality form and interpret the new variable.",
+      "promptLatex": "2x_1+x_2\\le8,\\qquad x_1,x_2\\ge0",
+      "steps": [
+        "The left side is the number of hours used.",
+        "Introduce a nonnegative variable s for hours that are not used.",
+        "Used hours plus unused hours must equal the 8 hours available.",
+        "Read s directly: s=0 means the workshop is full; s>0 means some time is left."
+      ],
+      "stepsLatex": [
+        "h_{\\mathrm{used}}=2x_1+x_2",
+        "s\\ge0",
+        "2x_1+x_2+s=8",
+        "s=8-2x_1-x_2"
+      ],
+      "finalAnswer": "Add s≥0 and write 2x1+x2+s=8. The slack variable is simply unused workshop time.",
+      "finalAnswerLatex": "2x_1+x_2+s=8,\\qquad s\\ge0",
+      "textbookSection": "2.2",
+      "textbookPage": 91
+    },
+    {
+      "id": "example-phase-one-impossible",
+      "unitId": "unit-06",
+      "title": "Use Phase I to detect two conflicting balances",
+      "prompt": "The original equations require the same nonnegative variable to equal both 1 and 2. Build Phase I and explain its nonzero optimum.",
+      "promptLatex": "x_1=1,\\qquad x_1=2,\\qquad x_1\\ge0",
+      "steps": [
+        "Add one auxiliary variable to each equation so an obvious starting basis exists.",
+        "Use the course objective that maximizes the negative sum of auxiliary variables.",
+        "Auxiliary feasibility forces x1≤1, and the best choice is x1=1.",
+        "One auxiliary variable still equals 1, so the Phase I optimum is negative rather than zero."
+      ],
+      "stepsLatex": [
+        "x_1+u_1=1,\\qquad x_1+u_2=2,\\qquad x_1,u\\ge0",
+        "\\max\\;(-u_1-u_2)",
+        "u_1=1-x_1,\\quad u_2=2-x_1,\\quad0\\le x_1\\le1",
+        "x_1=1,\\quad(u_1,u_2)=(0,1),\\quad v(Q)=-1<0"
+      ],
+      "finalAnswer": "Phase I cannot drive every auxiliary variable to zero, so the original equations are infeasible.",
+      "finalAnswerLatex": "v(Q)=-1<0\\quad\\Longrightarrow\\quad(P)\\text{ is infeasible}",
+      "textbookSection": "2.6.2",
+      "textbookPage": 128
+    },
+    {
+      "id": "example-geometry-storage-corner",
+      "unitId": "unit-07",
+      "title": "See a corner in a storage plan",
+      "prompt": "A storage plan chooses amounts x1 and x2 inside a 3-by-2 rectangle. Compare the corner (3,2) with the interior point (1,1).",
+      "promptLatex": "P=\\{x\\in\\mathbb R^2:0\\le x_1\\le3,\\ 0\\le x_2\\le2\\}",
+      "steps": [
+        "At (3,2), the two upper-bound constraints are tight.",
+        "Their normal vectors point in independent coordinate directions, so together they pin down one point.",
+        "At (1,1), none of the four boundary constraints is tight.",
+        "The interior point can move a little in many directions, so it is not a corner."
+      ],
+      "stepsLatex": [
+        "x_1=3,\\qquad x_2=2",
+        "\\operatorname{rank}\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}=2",
+        "0<1<3,\\qquad0<1<2",
+        "(1,1)=\\tfrac12(1-\\varepsilon,1)+\\tfrac12(1+\\varepsilon,1)"
+      ],
+      "finalAnswer": "(3,2) is an extreme point; (1,1) is not. Corners are pinned down by enough independent tight boundaries.",
+      "finalAnswerLatex": "(3,2)\\in\\operatorname{ext}(P),\\qquad(1,1)\\notin\\operatorname{ext}(P)",
+      "textbookSection": "2.8.3",
+      "textbookPage": 144
+    }
+  ]
+}

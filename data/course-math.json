@@ -1,0 +1,78 @@
+{
+  "theorems": {
+    "thm-lp-outcomes": "\\text{Exactly one holds: }S=\\varnothing,\\quad \\sup_{x\\in S}c^{\\mathsf T}x=+\\infty,\\quad\\text{or an optimal }x^*\\in S\\text{ exists.}",
+    "thm-simplex-termination-test": "\\bar c_N\\le0\\implies\\bar x\\text{ is optimal};\\qquad \\bar c_k>0,\\ \\bar A_k\\le0\\implies(P)\\text{ is unbounded.}",
+    "thm-phase-one": "(P)\\text{ is feasible}\\iff v(Q)=0",
+    "thm-bfs-extreme": "\\bar x\\in P=\\{x:Ax=b,\\ x\\ge0\\}:\\qquad \\bar x\\text{ is extreme}\\iff\\bar x\\text{ is a BFS}",
+    "thm-weak-duality": "x\\text{ primal feasible},\\ y\\text{ dual feasible}\\implies c^{\\mathsf T}x\\le b^{\\mathsf T}y",
+    "thm-strong-duality": "(P)\\text{ has an optimum}\\iff(D)\\text{ has an optimum},\\qquad v(P)=v(D)",
+    "thm-complementary-slackness": "x_j((A^{\\mathsf T}y)_j-c_j)=0\\;\\forall j,\\qquad y_i(b_i-(Ax)_i)=0\\;\\forall i",
+    "thm-farkas": "\\text{Exactly one holds: }\\exists x\\ge0:Ax=b;\\qquad\\exists y:A^{\\mathsf T}y\\ge0,\\ b^{\\mathsf T}y<0.",
+    "thm-kkt-course": "\\bar x\\text{ is optimal}\\iff-c\\in\\operatorname{cone}\\{\\nabla g_i(\\bar x):i\\in J(\\bar x)\\}"
+  },
+  "questions": {
+    "q-lp-variables": {
+      "fullSolutionLatex": "r,s\\ge0",
+      "finalAnswerLatex": "r=\\text{rye loaves},\\qquad s=\\text{sourdough loaves}"
+    },
+    "q-lp-formulate": {
+      "fullSolutionLatex": "\\begin{aligned}\\max\\;&5d+3f\\\\\\text{s.t. }&2d+f\\le40,\\\\&f\\le24,\\\\&d,f\\ge0.\\end{aligned}",
+      "finalAnswerLatex": "\\max\\{5d+3f:2d+f\\le40,\\ f\\le24,\\ d,f\\ge0\\}"
+    },
+    "q-lp-error": {
+      "promptLatex": "y\\in\\{0,1\\}",
+      "fullSolutionLatex": "0\\le x\\le500y",
+      "finalAnswerLatex": "0\\le x\\le500y"
+    },
+    "q-multiperiod": {
+      "promptLatex": "I_0=10",
+      "fullSolutionLatex": "I_t=I_{t-1}+p_t-d_t\\qquad(t=1,2,\\ldots)",
+      "finalAnswerLatex": "I_t=I_{t-1}+p_t-d_t"
+    },
+    "q-binary-link": {
+      "promptLatex": "y\\in\\{0,1\\}",
+      "fullSolutionLatex": "0\\le x\\le80y,\\qquad y\\in\\{0,1\\}",
+      "finalAnswerLatex": "0\\le x\\le80y,\\qquad y\\in\\{0,1\\}"
+    },
+    "q-cert-unbounded": {
+      "promptLatex": "\\max\\{c^{\\mathsf T}x:Ax=b,\\ x\\ge0\\}",
+      "fullSolutionLatex": "A\\bar x=b,\\quad\\bar x\\ge0,\\quad Ad=0,\\quad d\\ge0,\\quad c^{\\mathsf T}d>0",
+      "finalAnswerLatex": "A\\bar x=b,\\;\\bar x\\ge0,\\;Ad=0,\\;d\\ge0,\\;c^{\\mathsf T}d>0"
+    },
+    "q-sef-free": {
+      "fullSolutionLatex": "z=z^+-z^-,\\qquad z^+,z^-\\ge0",
+      "finalAnswerLatex": "z=z^+-z^-,\\qquad z^+,z^-\\ge0"
+    },
+    "q-simplex-ratio": {
+      "fullSolutionLatex": "\\frac84=2<3=\\frac62",
+      "finalAnswerLatex": "r=1"
+    },
+    "q-phase-one": {
+      "promptLatex": "v(Q)=-3",
+      "fullSolutionLatex": "v(Q)=-3<0\\implies(P)\\text{ is infeasible}",
+      "finalAnswerLatex": "(P)\\text{ is infeasible}"
+    },
+    "q-convex-set": {
+      "fullSolutionLatex": "x,y\\in S,\\ \\lambda\\in[0,1]\\implies\\lambda x+(1-\\lambda)y\\in S",
+      "finalAnswerLatex": "x,y\\in S,\\ \\lambda\\in[0,1]\\implies\\lambda x+(1-\\lambda)y\\in S"
+    },
+    "q-weak-duality": {
+      "fullSolutionLatex": "c^{\\mathsf T}x=12=b^{\\mathsf T}y\\implies x,y\\text{ are optimal}",
+      "finalAnswerLatex": "v(P)=v(D)=12"
+    },
+    "q-cs-inclusive": {
+      "fullSolutionLatex": "x_j s_j=0\\quad\\text{allows}\\quad x_j=s_j=0",
+      "finalAnswerLatex": "\\text{False}"
+    },
+    "q-ip-relaxation": {
+      "promptLatex": "x^*\\in\\mathbb{Z}^n",
+      "fullSolutionLatex": "x^*\\in P\\cap\\mathbb{Z}^n,\\qquad c^{\\mathsf T}x\\le c^{\\mathsf T}x^*\\quad\\forall x\\in P\\cap\\mathbb{Z}^n",
+      "finalAnswerLatex": "x^*\\text{ is optimal for the IP}"
+    },
+    "q-kkt-assumptions": {
+      "promptLatex": "\\min\\{c^{\\mathsf T}x:g_i(x)\\le0,\\ i=1,\\ldots,m\\}",
+      "fullSolutionLatex": "\\begin{gathered}g_i\\text{ is convex and differentiable for every }i,\\\\\\exists x':g_i(x')<0\\quad\\forall i,\\\\g_i(\\bar x)\\le0\\quad\\forall i.\\end{gathered}",
+      "finalAnswerLatex": "-c\\in\\operatorname{cone}\\{\\nabla g_i(\\bar x):i\\in J(\\bar x)\\}"
+    }
+  }
+}

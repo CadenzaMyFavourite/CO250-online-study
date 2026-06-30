@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "scope": "Plain-language first-read guidance for every CO 250 unit.",
+    "guideCount": 11
+  },
+  "guides": [
+    {
+      "unitId": "unit-01",
+      "bigIdea": "Turn a word problem into three things: choices, a score, and rules.",
+      "everydayAnalogy": "Planning a grocery budget: choose amounts, decide what 'best' means, and stay inside the limits.",
+      "firstCheck": "Before writing equations, say what each variable means and include its units."
+    },
+    {
+      "unitId": "unit-02",
+      "bigIdea": "Some decisions must be whole numbers or yes/no, and some relationships are curved instead of linear.",
+      "everydayAnalogy": "You can buy 2 buses but not 2.4 buses; turning a facility on is a yes/no decision.",
+      "firstCheck": "Ask which variables must be integer, binary, or continuous before choosing the model type."
+    },
+    {
+      "unitId": "unit-03",
+      "bigIdea": "An LP can have no feasible point, improve forever, or have a finite best value—and each claim needs evidence.",
+      "everydayAnalogy": "A trip can be impossible, have no speed limit, or have a fastest legal route; first identify which situation you are in.",
+      "firstCheck": "Do not confuse an empty feasible set with an objective that improves without bound."
+    },
+    {
+      "unitId": "unit-04",
+      "bigIdea": "Rewrite an LP into one common equation-and-nonnegativity format so simplex can read it.",
+      "everydayAnalogy": "Convert different plug shapes to one adapter standard before connecting them to the same machine.",
+      "firstCheck": "Track what happens to every inequality, free variable, and sign restriction during conversion."
+    },
+    {
+      "unitId": "unit-05",
+      "bigIdea": "Simplex moves from one corner solution to a better neighboring corner until no improving move remains.",
+      "everydayAnalogy": "Climb a hill by checking nearby paths; stop when every available step goes downhill.",
+      "firstCheck": "Choose an improving entering variable, then use only positive entering-column entries in the ratio test."
+    },
+    {
+      "unitId": "unit-06",
+      "bigIdea": "When no starting corner is obvious, solve a temporary problem whose only job is to find one.",
+      "everydayAnalogy": "Use training wheels to get moving, then remove them before the real ride.",
+      "firstCheck": "Phase I tests feasibility; Phase II restores the original objective."
+    },
+    {
+      "unitId": "unit-07",
+      "bigIdea": "The algebra of bases matches the geometry of corners and tight constraints.",
+      "everydayAnalogy": "At a room's corner, enough walls meet to pin down your position.",
+      "firstCheck": "List the tight constraints first, then ask whether their normal vectors have enough independent directions."
+    },
+    {
+      "unitId": "unit-08",
+      "bigIdea": "Every LP has a second price-based viewpoint that gives bounds on the original problem.",
+      "everydayAnalogy": "Value a production plan either by what it earns or by pricing the resources it consumes.",
+      "firstCheck": "Match each primal constraint to one dual variable and each primal variable to one dual constraint."
+    },
+    {
+      "unitId": "unit-09",
+      "bigIdea": "At optimality, a positive variable and unused slack cannot occur on opposite sides of the same primal-dual pair.",
+      "everydayAnalogy": "A resource left unused should have zero scarcity price; a resource with positive price should be fully used.",
+      "firstCheck": "Check feasibility first, then multiply each variable by its corresponding slack."
+    },
+    {
+      "unitId": "unit-10",
+      "bigIdea": "The LP relaxation allows fractions; valid cuts remove fractional points without removing any legal integer solution.",
+      "everydayAnalogy": "A calculation may suggest 2.5 boxes, but a cut records the real rule that only complete boxes count.",
+      "firstCheck": "For every proposed cut, verify both: all integer-feasible points satisfy it, and the target fractional point violates it."
+    },
+    {
+      "unitId": "unit-11",
+      "bigIdea": "Convexity makes curved optimization manageable: a local certificate can prove a global best solution.",
+      "everydayAnalogy": "In a bowl-shaped landscape, once every allowed direction points uphill, you are at the bottom of the whole bowl.",
+      "firstCheck": "Before using KKT, check convexity, differentiability, feasibility, and a Slater point."
+    }
+  ]
+}

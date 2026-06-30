@@ -1,0 +1,16 @@
+materials/
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+tmp/
+.env
+.env.*
+*.sqlite
+*.db
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+__pycache__/
+*.py[cod]

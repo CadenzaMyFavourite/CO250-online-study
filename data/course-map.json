@@ -1,0 +1,17 @@
+{
+  "course": "CO 250",
+  "title": "Introduction to Optimization",
+  "units": [
+    {"id":"unit-01","number":1,"title":"LP formulation","prerequisites":[],"topics":["Optimization workflow","Decision variables","Linear objectives","Linear constraints","Multiperiod models"]},
+    {"id":"unit-02","number":2,"title":"Integer & nonlinear formulation","prerequisites":["unit-01"],"topics":["Binary variables","Logical constraints","Big-M linking","Integer programs","Nonlinear programs"]},
+    {"id":"unit-03","number":3,"title":"LP outcomes & certificates","prerequisites":["unit-01"],"topics":["Optimality","Infeasibility","Unboundedness","Certificates"]},
+    {"id":"unit-04","number":4,"title":"Standard equality form","prerequisites":["unit-03"],"topics":["SEF conversion","Bases","Basic solutions","Basic feasible solutions","Canonical form"]},
+    {"id":"unit-05","number":5,"title":"Simplex algorithm","prerequisites":["unit-04"],"topics":["Entering variables","Leaving variables","Ratio test","Termination","Bland's rule"]},
+    {"id":"unit-06","number":6,"title":"Two-phase simplex","prerequisites":["unit-05"],"topics":["Auxiliary variables","Phase I","Feasibility detection","Phase II"]},
+    {"id":"unit-07","number":7,"title":"Geometry of simplex","prerequisites":["unit-04"],"topics":["Polyhedra","Convex sets","Extreme points","Tight constraints","BFS geometry"]},
+    {"id":"unit-08","number":8,"title":"Duality","prerequisites":["unit-03","unit-04"],"topics":["Primal-dual pairs","Weak duality","Strong duality","Dual construction"]},
+    {"id":"unit-09","number":9,"title":"Complementary slackness","prerequisites":["unit-08"],"topics":["CS conditions","Optimality verification","Geometric optimality","Farkas' lemma"]},
+    {"id":"unit-10","number":10,"title":"Integer programs","prerequisites":["unit-02","unit-05"],"topics":["Integer hull","LP relaxation","Cutting planes"]},
+    {"id":"unit-11","number":11,"title":"Convex optimization","prerequisites":["unit-02","unit-07","unit-09"],"topics":["Convex functions","Subgradients","Supporting halfspaces","Slater points","KKT conditions"]}
+  ]
+}

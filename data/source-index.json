@@ -1,0 +1,211 @@
+{
+  "generatedBy": "scripts/inventory_sources.py",
+  "fileCount": 18,
+  "uniqueContentCount": 17,
+  "duplicates": [
+    [
+      "CO_250_S26 (14) (1).pdf",
+      "CO_250_S26 (14).pdf"
+    ]
+  ],
+  "sources": [
+    {
+      "fileName": "A Gentle Introduction to Optimization (B. Guenin, J. Könemann, L. Tunçel) (Z-Library).pdf.pdf",
+      "fileType": "PDF",
+      "pages": 403,
+      "bytes": 10485242,
+      "sha256": "366e28a7f45de96196ef0f1a914cd4d7fa4e2e0d313e6e8c903f42f12cf6725b",
+      "kind": "textbook",
+      "textCharacters": 490542,
+      "emptyTextPages": 1,
+      "extractionQuality": "high"
+    },
+    {
+      "fileName": "CO 250 W26 IP and NLP formulation review.pdf",
+      "fileType": "PDF",
+      "pages": 3,
+      "bytes": 1341164,
+      "sha256": "b17a2657895435e40bdc970f64be5dd9c3bc426448e110f0d7c8c1a6f51add4c",
+      "kind": "review",
+      "textCharacters": 1864,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "co250_w26_mid_prac.pdf",
+      "fileType": "PDF",
+      "pages": 7,
+      "bytes": 135661,
+      "sha256": "40ddb596bc31da1e302be7208946254fbd2013152f2d445c60ea1954b42ada26",
+      "kind": "practice-no-solutions",
+      "textCharacters": 11133,
+      "emptyTextPages": 0,
+      "extractionQuality": "high"
+    },
+    {
+      "fileName": "CO_250_S26 (14) (1).pdf",
+      "fileType": "PDF",
+      "pages": 5,
+      "bytes": 116241,
+      "sha256": "2983ae09f0e75586843d0e8e0e9767eedf80fd949ae421a705ec51d5c042b1a8",
+      "kind": "assignment-solutions",
+      "textCharacters": 6467,
+      "emptyTextPages": 0,
+      "extractionQuality": "high"
+    },
+    {
+      "fileName": "CO_250_S26 (14).pdf",
+      "fileType": "PDF",
+      "pages": 5,
+      "bytes": 116241,
+      "sha256": "2983ae09f0e75586843d0e8e0e9767eedf80fd949ae421a705ec51d5c042b1a8",
+      "kind": "assignment-solutions",
+      "textCharacters": 6467,
+      "emptyTextPages": 0,
+      "extractionQuality": "high"
+    },
+    {
+      "fileName": "CO_250_S26 (15).pdf",
+      "fileType": "PDF",
+      "pages": 7,
+      "bytes": 119866,
+      "sha256": "f20ff67878209bea4ae0c0213e0e40cbc2867673540404ff2b5f5961fc0d3104",
+      "kind": "assignment-solutions",
+      "textCharacters": 8774,
+      "emptyTextPages": 0,
+      "extractionQuality": "high"
+    },
+    {
+      "fileName": "CO_250_S26 (16).pdf",
+      "fileType": "PDF",
+      "pages": 4,
+      "bytes": 121794,
+      "sha256": "ae89ce7f450581957c2cd0bb3e6d55378bf8c09a7d2597a802773adf305845d8",
+      "kind": "assignment-solutions",
+      "textCharacters": 5743,
+      "emptyTextPages": 0,
+      "extractionQuality": "high"
+    },
+    {
+      "fileName": "co_250_s26_exams (3).pdf",
+      "fileType": "PDF",
+      "pages": 6,
+      "bytes": 160521,
+      "sha256": "37db4b02602699fbbf5b568ba40ff0f265ab5aa32c1da09f15f5fe10fa5554b5",
+      "kind": "exam-solutions",
+      "textCharacters": 8195,
+      "emptyTextPages": 0,
+      "extractionQuality": "high"
+    },
+    {
+      "fileName": "Review 1 - LP formulation.pdf",
+      "fileType": "PDF",
+      "pages": 2,
+      "bytes": 890142,
+      "sha256": "152cf7a869a24aaf76bdfa4e73c1013b70c92d6a22b7e040b301af5ee18af6c9",
+      "kind": "review",
+      "textCharacters": 947,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 10 - Integer programs.pdf",
+      "fileType": "PDF",
+      "pages": 3,
+      "bytes": 1948234,
+      "sha256": "36c321c1e1931eb702f896c14bf8271f3693f2f4e26f995f4a4318eef563de74",
+      "kind": "review",
+      "textCharacters": 2126,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 11 - NLPs and convex optimization.pdf",
+      "fileType": "PDF",
+      "pages": 5,
+      "bytes": 4268717,
+      "sha256": "158169ad830596fdd3494afc6df3870c138aaf797daecb88d8b9cedfeaa6ebbd",
+      "kind": "review",
+      "textCharacters": 3079,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 3 - Certificates of LPs.pdf",
+      "fileType": "PDF",
+      "pages": 4,
+      "bytes": 1541237,
+      "sha256": "1a5ee9a4d516fc7083381a51578557b995817ffaab036fead3b62fd4c97f6eb8",
+      "kind": "review",
+      "textCharacters": 2362,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 4 - Simplex set up.pdf",
+      "fileType": "PDF",
+      "pages": 3,
+      "bytes": 1416665,
+      "sha256": "1095cc3863cf722587ebad476a2b19ee6d72fce3d3f098459688abd667b66c3e",
+      "kind": "review",
+      "textCharacters": 1989,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 5 - Simplex algorithm.pdf",
+      "fileType": "PDF",
+      "pages": 2,
+      "bytes": 1064884,
+      "sha256": "45fcc352863230f78fe1191e9f372e6ff71a72f1e7d4edfc239051fe5631a7b8",
+      "kind": "review",
+      "textCharacters": 1423,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 6 - Two-phase simplex.pdf",
+      "fileType": "PDF",
+      "pages": 2,
+      "bytes": 955520,
+      "sha256": "1b09b716af3a71e3ed96a2d353051a94c5f149af13397a39989fb7eac3c4aa3c",
+      "kind": "review",
+      "textCharacters": 1283,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 7 - Geometry of simplex.pdf",
+      "fileType": "PDF",
+      "pages": 4,
+      "bytes": 2157382,
+      "sha256": "b560fb05b4065afb3e28df57bd959b11d0d55871e459b1058a5d9fc6896abced",
+      "kind": "review",
+      "textCharacters": 2382,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 8 - Duality.pdf",
+      "fileType": "PDF",
+      "pages": 2,
+      "bytes": 930142,
+      "sha256": "63319b56fb6e9ccc7f3af84fd8176e9f889f4c4b5b9690ea21f57c1c3669d4fb",
+      "kind": "review",
+      "textCharacters": 1339,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    },
+    {
+      "fileName": "Review 9 - CS conditions and applications.pdf",
+      "fileType": "PDF",
+      "pages": 3,
+      "bytes": 1360978,
+      "sha256": "e53966cd6356f39a6751e67c2e29c85648784ee524b52047bc7703a9d29b7297",
+      "kind": "review",
+      "textCharacters": 1826,
+      "emptyTextPages": 0,
+      "extractionQuality": "medium"
+    }
+  ]
+}

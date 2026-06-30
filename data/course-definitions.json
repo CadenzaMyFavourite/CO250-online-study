@@ -1,0 +1,893 @@
+{
+  "metadata": {
+    "scope": "Definitions and explicitly defined terminology from the textbook sections covered by CO 250 Reviews 1–11.",
+    "authority": "The supplied textbook is primary; review sheets determine course order and emphasis.",
+    "pageNumbering": "PDF page numbers",
+    "auditStatus": "textbook-checked",
+    "definitionCount": 89
+  },
+  "definitions": [
+    {
+      "id": "def-optimization-problem",
+      "unitId": "unit-01",
+      "title": "Optimization problem",
+      "formalStatement": "A problem of choosing values for unknown quantities to maximize or minimize an objective while satisfying all stated constraints.",
+      "plainLanguageExplanation": "It asks for the best allowable decision, not merely any allowable decision.",
+      "textbookSection": "1.1",
+      "textbookPage": 17
+    },
+    {
+      "id": "def-formulation",
+      "unitId": "unit-01",
+      "title": "Formulation",
+      "formalStatement": "A formulation is a mathematical representation of an optimization problem.",
+      "plainLanguageExplanation": "It translates the word description into variables, an objective, and constraints.",
+      "textbookSection": "1.1–1.1.2",
+      "textbookPage": 17
+    },
+    {
+      "id": "def-decision-variable",
+      "unitId": "unit-01",
+      "title": "Decision variable",
+      "formalStatement": "A variable is an unknown quantity whose value is chosen by the optimization model.",
+      "plainLanguageExplanation": "It represents one of the decisions the model must make.",
+      "textbookSection": "1.1",
+      "textbookPage": 17
+    },
+    {
+      "id": "def-objective-function",
+      "unitId": "unit-01",
+      "title": "Objective function",
+      "formalStatement": "The objective function assigns a value to each candidate solution and is the quantity to be maximized or minimized.",
+      "plainLanguageExplanation": "It is the score used to decide which feasible solution is best.",
+      "textbookSection": "1.1",
+      "textbookPage": 17
+    },
+    {
+      "id": "def-mathematical-constraint",
+      "unitId": "unit-01",
+      "title": "Mathematical constraint",
+      "formalStatement": "A mathematical constraint is an equation or inequality that every feasible assignment of the variables must satisfy.",
+      "plainLanguageExplanation": "Constraints encode limits, balances, requirements, and sign restrictions.",
+      "textbookSection": "1.1",
+      "textbookPage": 17
+    },
+    {
+      "id": "def-solution",
+      "unitId": "unit-01",
+      "title": "Solution to a formulation",
+      "formalStatement": "A solution is an assignment of values to every variable in the formulation.",
+      "plainLanguageExplanation": "A solution need not satisfy the constraints; feasibility is a separate condition.",
+      "textbookSection": "1.1.2",
+      "textbookPage": 20
+    },
+    {
+      "id": "def-feasible-solution",
+      "unitId": "unit-01",
+      "title": "Feasible solution",
+      "formalStatement": "A solution is feasible if it satisfies every constraint in the formulation.",
+      "plainLanguageExplanation": "It is an allowable decision, though not necessarily the best one.",
+      "textbookSection": "1.1.2",
+      "textbookPage": 20
+    },
+    {
+      "id": "def-optimal-solution",
+      "unitId": "unit-01",
+      "title": "Optimal solution",
+      "formalStatement": "An optimal solution is a feasible solution with objective value at least as good as every other feasible solution.",
+      "formalLatex": "x^*\\in S,\\qquad f(x^*)\\ge f(x)\\ \\text{for all }x\\in S\\quad\\text{(maximization)}",
+      "plainLanguageExplanation": "It is feasible and no competing feasible decision has a better value.",
+      "textbookSection": "1.1.2",
+      "textbookPage": 20
+    },
+    {
+      "id": "def-affine-function",
+      "unitId": "unit-01",
+      "title": "Affine function",
+      "formalStatement": "A function from R^n to R is affine when it is a linear function plus a constant.",
+      "formalLatex": "f:\\mathbb{R}^n\\to\\mathbb{R},\\qquad f(x)=a^{\\mathsf T}x+\\beta",
+      "plainLanguageExplanation": "Variables appear only to the first power and are not multiplied together; a constant term is allowed.",
+      "textbookSection": "1.2",
+      "textbookPage": 22
+    },
+    {
+      "id": "def-linear-function",
+      "unitId": "unit-01",
+      "title": "Linear function",
+      "formalStatement": "An affine function is linear when its constant term is zero.",
+      "formalLatex": "f(x)=a^{\\mathsf T}x",
+      "plainLanguageExplanation": "Every linear function is affine, but an affine function with a nonzero constant is not linear.",
+      "textbookSection": "1.2",
+      "textbookPage": 22
+    },
+    {
+      "id": "def-linear-constraint",
+      "unitId": "unit-01",
+      "title": "Linear constraint",
+      "formalStatement": "After moving variables to the left and constants to the right, a linear constraint has one of three forms with a linear left-hand side.",
+      "formalLatex": "f(x)\\le\\beta,\\qquad f(x)\\ge\\beta,\\qquad\\text{or}\\qquad f(x)=\\beta",
+      "plainLanguageExplanation": "Its boundary is described by a first-degree expression in the decision variables.",
+      "textbookSection": "1.2",
+      "textbookPage": 23
+    },
+    {
+      "id": "def-linear-program",
+      "unitId": "unit-01",
+      "title": "Linear program",
+      "formalStatement": "A linear program maximizes or minimizes an affine objective subject to finitely many linear constraints.",
+      "formalLatex": "\\operatorname{optimize}\\; c^{\\mathsf T}x+z\\qquad\\text{subject to finitely many linear constraints}",
+      "plainLanguageExplanation": "The objective and every constraint are affine in the variables.",
+      "textbookSection": "1.2",
+      "textbookPage": 23
+    },
+
+    {
+      "id": "def-integer-program",
+      "unitId": "unit-02",
+      "title": "Integer program",
+      "formalStatement": "An integer program is a linear program in which a nonempty subset of variables is required to take integer values.",
+      "formalLatex": "x_j\\in\\mathbb{Z}\\qquad(j\\in I\\ne\\varnothing)",
+      "plainLanguageExplanation": "It adds indivisibility requirements to an LP.",
+      "textbookSection": "1.3",
+      "textbookPage": 35
+    },
+    {
+      "id": "def-pure-integer-program",
+      "unitId": "unit-02",
+      "title": "Pure integer program",
+      "formalStatement": "An integer program is pure when every decision variable is required to be integer.",
+      "formalLatex": "x\\in\\mathbb{Z}^n",
+      "plainLanguageExplanation": "There are no continuous decision variables.",
+      "textbookSection": "1.3",
+      "textbookPage": 35
+    },
+    {
+      "id": "def-mixed-integer-program",
+      "unitId": "unit-02",
+      "title": "Mixed integer program",
+      "formalStatement": "An integer program is mixed when some, but not all, decision variables are required to be integer.",
+      "plainLanguageExplanation": "Integer and continuous variables appear in the same model.",
+      "textbookSection": "1.3",
+      "textbookPage": 35
+    },
+    {
+      "id": "def-binary-variable",
+      "unitId": "unit-02",
+      "title": "Binary variable",
+      "formalStatement": "A binary variable may take only the values zero and one.",
+      "formalLatex": "y\\in\\{0,1\\}",
+      "plainLanguageExplanation": "It represents a two-way choice such as off/on or no/yes.",
+      "textbookSection": "1.3",
+      "textbookPage": 38
+    },
+    {
+      "id": "def-nonlinear-program",
+      "unitId": "unit-02",
+      "title": "Nonlinear program",
+      "formalStatement": "In the textbook convention, a nonlinear program minimizes a function subject to finitely many functional inequalities.",
+      "formalLatex": "\\begin{aligned}\\min_{x\\in\\mathbb{R}^n}\\;&f(x)\\\\\\text{s.t. }&g_i(x)\\le 0,\\quad i=1,\\ldots,m.\\end{aligned}",
+      "plainLanguageExplanation": "The functions may be nonlinear; an LP is the special case in which they are affine.",
+      "textbookSection": "1.6",
+      "textbookPage": 67
+    },
+
+    {
+      "id": "def-objective-value",
+      "unitId": "unit-03",
+      "title": "Value of a solution",
+      "formalStatement": "The value of a candidate vector is the value of the objective function evaluated at that vector.",
+      "formalLatex": "z(x)=c^{\\mathsf T}x+z_0",
+      "plainLanguageExplanation": "It is the score attached to that particular assignment.",
+      "textbookSection": "2.1",
+      "textbookPage": 78
+    },
+    {
+      "id": "def-optimal-value",
+      "unitId": "unit-03",
+      "title": "Optimal value",
+      "formalStatement": "The optimal value is the objective value attained by an optimal solution.",
+      "formalLatex": "z^*=z(x^*)",
+      "plainLanguageExplanation": "An LP can have many optimal solutions but only one optimal value.",
+      "textbookSection": "2.1",
+      "textbookPage": 78
+    },
+    {
+      "id": "def-feasible-lp",
+      "unitId": "unit-03",
+      "title": "Feasible LP",
+      "formalStatement": "An LP is feasible if it has at least one feasible solution.",
+      "formalLatex": "S\\ne\\varnothing",
+      "plainLanguageExplanation": "Its constraints can all be satisfied simultaneously.",
+      "textbookSection": "2.1",
+      "textbookPage": 78
+    },
+    {
+      "id": "def-infeasible-lp",
+      "unitId": "unit-03",
+      "title": "Infeasible LP",
+      "formalStatement": "An LP is infeasible if it has no feasible solution.",
+      "formalLatex": "S=\\varnothing",
+      "plainLanguageExplanation": "No assignment satisfies all constraints at once.",
+      "textbookSection": "2.1",
+      "textbookPage": 78
+    },
+    {
+      "id": "def-unbounded-lp",
+      "unitId": "unit-03",
+      "title": "Unbounded LP",
+      "formalStatement": "A maximization LP is unbounded when feasible solutions can have arbitrarily large objective value; for minimization, arbitrarily small value.",
+      "formalLatex": "\\forall\\alpha\\in\\mathbb{R},\\;\\exists x\\in S:\\ z(x)>\\alpha\\quad\\text{(maximization)}",
+      "plainLanguageExplanation": "There is no finite best objective value in the improving direction.",
+      "textbookSection": "2.1",
+      "textbookPage": 78
+    },
+    {
+      "id": "def-certificate-infeasibility",
+      "unitId": "unit-03",
+      "title": "Certificate of infeasibility",
+      "formalStatement": "For the system Ax=b, x≥0, a vector y satisfying y^T A≥0^T and y^T b<0 is a certificate of infeasibility.",
+      "formalLatex": "y^{\\mathsf T}A\\ge 0^{\\mathsf T},\\qquad y^{\\mathsf T}b<0",
+      "plainLanguageExplanation": "A weighted combination of the equations produces a contradiction with nonnegativity.",
+      "textbookSection": "2.1.1",
+      "textbookPage": 82
+    },
+    {
+      "id": "def-certificate-unboundedness",
+      "unitId": "unit-03",
+      "title": "Certificate of unboundedness",
+      "formalStatement": "For max{c^T x:Ax=b,x≥0}, a feasible point x-bar and direction d form a certificate when Ad=0, d≥0, and c^T d>0.",
+      "formalLatex": "A\\bar x=b,\\;\\bar x\\ge0,\\qquad Ad=0,\\;d\\ge0,\\;c^{\\mathsf T}d>0",
+      "plainLanguageExplanation": "The ray x-bar+td stays feasible and improves forever.",
+      "textbookSection": "2.1.2",
+      "textbookPage": 84
+    },
+    {
+      "id": "def-certificate-optimality",
+      "unitId": "unit-03",
+      "title": "Certificate of optimality",
+      "formalStatement": "A certificate of optimality is a verifiable construction of a bound matching the value of a feasible solution.",
+      "formalLatex": "z(x)\\le U=z(\\bar x)\\quad\\text{for every feasible }x",
+      "plainLanguageExplanation": "Feasibility supplies one side of the claim and the matching bound proves no better solution exists.",
+      "textbookSection": "2.1.3",
+      "textbookPage": 86
+    },
+
+    {
+      "id": "def-sef",
+      "unitId": "unit-04",
+      "title": "Standard equality form",
+      "formalStatement": "An LP is in standard equality form when it is a maximization problem, every non-sign constraint is an equality, and every variable is nonnegative.",
+      "formalLatex": "\\max\\{c^{\\mathsf T}x+z_0:Ax=b,\\ x\\ge0\\}",
+      "plainLanguageExplanation": "SEF is the representation used by the course simplex method.",
+      "textbookSection": "2.2",
+      "textbookPage": 87
+    },
+    {
+      "id": "def-free-variable",
+      "unitId": "unit-04",
+      "title": "Free variable",
+      "formalStatement": "A variable is free when the formulation imposes no sign restriction on it.",
+      "formalLatex": "x_j\\in\\mathbb{R}",
+      "plainLanguageExplanation": "It may be negative, zero, or positive and can be replaced by x_j^+−x_j^− with both new variables nonnegative.",
+      "textbookSection": "2.2",
+      "textbookPage": 89
+    },
+    {
+      "id": "def-slack-variable",
+      "unitId": "unit-04",
+      "title": "Slack variable",
+      "formalStatement": "A nonnegative slack variable converts a linear inequality into an equality.",
+      "formalLatex": "a^{\\mathsf T}x\\le\\beta\\iff a^{\\mathsf T}x+s=\\beta,\\ s\\ge0",
+      "plainLanguageExplanation": "Its value measures unused capacity; for a ≥ constraint it is subtracted.",
+      "textbookSection": "2.2",
+      "textbookPage": 91
+    },
+    {
+      "id": "def-column-submatrix",
+      "unitId": "unit-04",
+      "title": "Column submatrix A_J",
+      "formalStatement": "For a set J of column indices, A_J is the matrix made from the columns A_j with j in J, in index order.",
+      "formalLatex": "A_J=[A_j]_{j\\in J}",
+      "plainLanguageExplanation": "It extracts the columns chosen by an index set.",
+      "textbookSection": "2.4.1",
+      "textbookPage": 96
+    },
+    {
+      "id": "def-basis",
+      "unitId": "unit-04",
+      "title": "Basis",
+      "formalStatement": "Assuming A has linearly independent rows, a set B of column indices is a basis when A_B is square and nonsingular.",
+      "formalLatex": "B\\text{ is a basis}\\iff A_B\\in\\mathbb{R}^{m\\times m}\\text{ and }\\det(A_B)\\ne0",
+      "plainLanguageExplanation": "The selected columns form an invertible square matrix.",
+      "textbookSection": "2.4.1",
+      "textbookPage": 96
+    },
+    {
+      "id": "def-basic-nonbasic-variable",
+      "unitId": "unit-04",
+      "title": "Basic and nonbasic variables",
+      "formalStatement": "For a basis B, x_j is basic when j∈B and nonbasic when j belongs to the complementary index set N.",
+      "formalLatex": "N=\\{1,\\ldots,n\\}\\setminus B",
+      "plainLanguageExplanation": "The basis partitions the variables into the ones solved from the equations and the ones set to zero in the basic solution.",
+      "textbookSection": "2.4.1",
+      "textbookPage": 97
+    },
+    {
+      "id": "def-basic-solution",
+      "unitId": "unit-04",
+      "title": "Basic solution",
+      "formalStatement": "The basic solution associated with B satisfies Ax=b and sets all nonbasic variables to zero.",
+      "formalLatex": "x_N=0,\\qquad x_B=A_B^{-1}b",
+      "plainLanguageExplanation": "Each basis determines exactly one solution of the equality system.",
+      "textbookSection": "2.4.1",
+      "textbookPage": 97
+    },
+    {
+      "id": "def-bfs",
+      "unitId": "unit-04",
+      "title": "Basic feasible solution",
+      "formalStatement": "A basic feasible solution is a basic solution that is componentwise nonnegative.",
+      "formalLatex": "x_N=0,\\quad x_B=A_B^{-1}b,\\quad x\\ge0",
+      "plainLanguageExplanation": "It is the feasible point associated with a basis; basic variables may still equal zero.",
+      "textbookSection": "2.4.1",
+      "textbookPage": 98
+    },
+    {
+      "id": "def-feasible-basis",
+      "unitId": "unit-04",
+      "title": "Feasible basis",
+      "formalStatement": "A basis is feasible when its associated basic solution is feasible.",
+      "formalLatex": "A_B^{-1}b\\ge0",
+      "plainLanguageExplanation": "Feasibility is a property of the basis through its unique basic solution.",
+      "textbookSection": "2.4.1",
+      "textbookPage": 98
+    },
+    {
+      "id": "def-canonical-form",
+      "unitId": "unit-04",
+      "title": "Canonical form for a basis",
+      "formalStatement": "An SEF LP is in canonical form for B when the basis columns form the identity and the basic objective coefficients are zero.",
+      "formalLatex": "A_B=I,\\qquad c_B=0",
+      "plainLanguageExplanation": "The basic variables can be read directly from the right-hand side and do not appear in the reduced objective.",
+      "textbookSection": "2.4.2",
+      "textbookPage": 99
+    },
+
+    {
+      "id": "def-entering-variable",
+      "unitId": "unit-05",
+      "title": "Entering variable",
+      "formalStatement": "In a simplex iteration, an entering variable is a selected nonbasic variable with a positive objective coefficient in the current canonical maximization form.",
+      "formalLatex": "k\\in N,\\qquad \\bar c_k>0",
+      "plainLanguageExplanation": "It is the nonbasic variable simplex attempts to increase from zero.",
+      "textbookSection": "2.5.3",
+      "textbookPage": 115
+    },
+    {
+      "id": "def-leaving-variable",
+      "unitId": "unit-05",
+      "title": "Leaving variable",
+      "formalStatement": "The leaving variable is the basic variable selected by the minimum-ratio test for the entering column.",
+      "formalLatex": "r\\in\\operatorname*{argmin}_{i:\\bar A_{ik}>0}\\frac{\\bar b_i}{\\bar A_{ik}},\\qquad \\ell=B_r",
+      "plainLanguageExplanation": "It reaches zero first as the entering variable increases.",
+      "textbookSection": "2.5.3",
+      "textbookPage": 114
+    },
+    {
+      "id": "def-degenerate-iteration",
+      "unitId": "unit-05",
+      "title": "Degenerate simplex iteration",
+      "formalStatement": "A simplex iteration is degenerate when the step length is zero, so the basis changes but the basic feasible solution does not.",
+      "formalLatex": "t^*=\\min_{i:\\bar A_{ik}>0}\\frac{\\bar b_i}{\\bar A_{ik}}=0",
+      "plainLanguageExplanation": "The algorithm pivots without moving to a new point or improving the objective.",
+      "textbookSection": "2.5.3",
+      "textbookPage": 116
+    },
+    {
+      "id": "def-cycling",
+      "unitId": "unit-05",
+      "title": "Cycling",
+      "formalStatement": "Cycling is the behavior in which simplex revisits bases indefinitely and therefore fails to terminate.",
+      "plainLanguageExplanation": "Repeated degenerate pivots can return the algorithm to an earlier basis.",
+      "textbookSection": "2.5.3",
+      "textbookPage": 116
+    },
+    {
+      "id": "def-blands-rule",
+      "unitId": "unit-05",
+      "title": "Bland’s rule",
+      "formalStatement": "Bland’s rule chooses the smallest-index eligible entering variable and the smallest-index eligible leaving variable among ratio-test ties.",
+      "formalLatex": "k=\\min\\{j\\in N:\\bar c_j>0\\}",
+      "plainLanguageExplanation": "This deterministic tie-breaking rule prevents cycling.",
+      "textbookSection": "2.5.3",
+      "textbookPage": 116
+    },
+    {
+      "id": "def-ratio-test",
+      "unitId": "unit-05",
+      "title": "Simplex ratio test",
+      "formalStatement": "For an entering column k in canonical form, the ratio test chooses the largest nonnegative step that preserves nonnegativity by taking the smallest ratio of the current right-hand side to a positive entry in that column.",
+      "formalLatex": "t^*=\\min_{i:\\bar A_{ik}>0}\\frac{\\bar b_i}{\\bar A_{ik}}",
+      "plainLanguageExplanation": "It identifies which basic variable reaches zero first and therefore which row can leave the basis.",
+      "textbookSection": "2.5.1",
+      "textbookPage": 109
+    },
+    {
+      "id": "def-pivot-operation",
+      "unitId": "unit-05",
+      "title": "Matrix pivot operation",
+      "formalStatement": "For T_ij nonzero, pivoting T on element (i,j) scales row i so the pivot becomes one, then eliminates column j from every other row.",
+      "formalLatex": "\\operatorname{row}_k(T')=\\begin{cases}\\dfrac{1}{T_{ij}}\\operatorname{row}_i(T),&k=i,\\\\[4pt]\\operatorname{row}_k(T)-\\dfrac{T_{kj}}{T_{ij}}\\operatorname{row}_i(T),&k\\ne i.\\end{cases}",
+      "plainLanguageExplanation": "It is the Gauss-Jordan row operation that updates a tableau from one basis to the next.",
+      "textbookSection": "2.7.1",
+      "textbookPage": 133
+    },
+
+    {
+      "id": "def-auxiliary-variable",
+      "unitId": "unit-06",
+      "title": "Auxiliary variable",
+      "formalStatement": "An auxiliary variable is an added nonnegative variable used to create an obvious identity basis for Phase I.",
+      "formalLatex": "Ax+u=b,\\qquad u\\ge0",
+      "plainLanguageExplanation": "It is temporary and must be driven to zero before returning to the original LP.",
+      "textbookSection": "2.6.1",
+      "textbookPage": 126
+    },
+    {
+      "id": "def-auxiliary-lp",
+      "unitId": "unit-06",
+      "title": "Auxiliary LP",
+      "formalStatement": "After making b nonnegative, the auxiliary LP optimizes the negative sum of auxiliary variables subject to the augmented equalities.",
+      "formalLatex": "\\max\\{-\\mathbf{1}^{\\mathsf T}u:Ax+u=b,\\ x\\ge0,\\ u\\ge0\\}",
+      "plainLanguageExplanation": "Its optimum is zero exactly when all auxiliary variables can be removed while retaining feasibility.",
+      "textbookSection": "2.6.1",
+      "textbookPage": 126
+    },
+    {
+      "id": "def-phase-one",
+      "unitId": "unit-06",
+      "title": "Phase I",
+      "formalStatement": "Phase I solves the auxiliary LP to find a basic feasible solution of the original LP or prove the original LP infeasible.",
+      "plainLanguageExplanation": "It is the feasibility-finding phase of two-phase simplex.",
+      "textbookSection": "2.6.2",
+      "textbookPage": 128
+    },
+    {
+      "id": "def-phase-two",
+      "unitId": "unit-06",
+      "title": "Phase II",
+      "formalStatement": "Phase II removes the auxiliary variables, restores the original objective, and optimizes from the feasible basis found in Phase I.",
+      "plainLanguageExplanation": "Once feasibility is settled, ordinary simplex solves the original objective.",
+      "textbookSection": "2.6.2",
+      "textbookPage": 128
+    },
+
+    {
+      "id": "def-feasible-region",
+      "unitId": "unit-07",
+      "title": "Feasible region",
+      "formalStatement": "The feasible region of an LP is the set of all of its feasible solutions.",
+      "formalLatex": "S=\\{x:\\ x\\text{ satisfies every constraint of }(P)\\}",
+      "plainLanguageExplanation": "It is the geometric set in which the optimizer is allowed to search.",
+      "textbookSection": "2.8.1",
+      "textbookPage": 138
+    },
+    {
+      "id": "def-euclidean-norm",
+      "unitId": "unit-07",
+      "title": "Euclidean norm",
+      "formalStatement": "The Euclidean norm of a vector is the square root of the sum of the squares of its entries.",
+      "formalLatex": "\\lVert x\\rVert_2=\\sqrt{x_1^2+\\cdots+x_n^2}",
+      "plainLanguageExplanation": "It is the ordinary length of the vector and its distance from the origin.",
+      "textbookSection": "2.8.1",
+      "textbookPage": 139
+    },
+    {
+      "id": "def-hyperplane",
+      "unitId": "unit-07",
+      "title": "Hyperplane",
+      "formalStatement": "For nonzero a, the solution set of one linear equality is a hyperplane.",
+      "formalLatex": "H=\\{x\\in\\mathbb{R}^n:a^{\\mathsf T}x=\\beta\\},\\qquad a\\ne0",
+      "plainLanguageExplanation": "It is an (n−1)-dimensional flat boundary.",
+      "textbookSection": "2.8.1",
+      "textbookPage": 139
+    },
+    {
+      "id": "def-halfspace",
+      "unitId": "unit-07",
+      "title": "Halfspace",
+      "formalStatement": "For nonzero a, one side of a hyperplane, including its boundary, is a halfspace.",
+      "formalLatex": "F=\\{x\\in\\mathbb{R}^n:a^{\\mathsf T}x\\le\\beta\\},\\qquad a\\ne0",
+      "plainLanguageExplanation": "A single linear inequality describes a halfspace.",
+      "textbookSection": "2.8.1",
+      "textbookPage": 139
+    },
+    {
+      "id": "def-polyhedron",
+      "unitId": "unit-07",
+      "title": "Polyhedron",
+      "formalStatement": "A polyhedron is the solution set of finitely many linear inequalities, equivalently a finite intersection of halfspaces.",
+      "formalLatex": "P=\\{x\\in\\mathbb{R}^n:Ax\\le b\\}",
+      "plainLanguageExplanation": "Every LP feasible region is a polyhedron or the empty set.",
+      "textbookSection": "2.8.1",
+      "textbookPage": 141
+    },
+    {
+      "id": "def-line",
+      "unitId": "unit-07",
+      "title": "Line through two points",
+      "formalStatement": "The line through x^(1) and x^(2) contains all affine combinations of the two points.",
+      "formalLatex": "\\{\\lambda x^{(1)}+(1-\\lambda)x^{(2)}:\\lambda\\in\\mathbb{R}\\}",
+      "plainLanguageExplanation": "The parameter may extend beyond either endpoint.",
+      "textbookSection": "2.8.2",
+      "textbookPage": 141
+    },
+    {
+      "id": "def-line-segment",
+      "unitId": "unit-07",
+      "title": "Line segment",
+      "formalStatement": "The line segment with endpoints x^(1) and x^(2) contains their convex combinations.",
+      "formalLatex": "\\{\\lambda x^{(1)}+(1-\\lambda)x^{(2)}:0\\le\\lambda\\le1\\}",
+      "plainLanguageExplanation": "It includes both endpoints and every point between them.",
+      "textbookSection": "2.8.2",
+      "textbookPage": 141
+    },
+    {
+      "id": "def-convex-set",
+      "unitId": "unit-07",
+      "title": "Convex set",
+      "formalStatement": "A set is convex when it contains the line segment joining every pair of its points.",
+      "formalLatex": "x^{(1)},x^{(2)}\\in C,\\;\\lambda\\in[0,1]\\implies\\lambda x^{(1)}+(1-\\lambda)x^{(2)}\\in C",
+      "plainLanguageExplanation": "Moving directly between two points in the set never leaves it.",
+      "textbookSection": "2.8.2",
+      "textbookPage": 141
+    },
+    {
+      "id": "def-properly-contained",
+      "unitId": "unit-07",
+      "title": "Properly contained in a line segment",
+      "formalStatement": "A point is properly contained in a line segment when it lies on the segment but is distinct from both endpoints.",
+      "formalLatex": "x=\\lambda x^{(1)}+(1-\\lambda)x^{(2)},\\qquad 0<\\lambda<1",
+      "plainLanguageExplanation": "It is an interior point of that segment.",
+      "textbookSection": "2.8.3",
+      "textbookPage": 143
+    },
+    {
+      "id": "def-extreme-point",
+      "unitId": "unit-07",
+      "title": "Extreme point",
+      "formalStatement": "For a convex set C, x is an extreme point when no line segment contained in C properly contains x.",
+      "formalLatex": "x=\\lambda u+(1-\\lambda)v,\\;u,v\\in C,\\;0<\\lambda<1\\implies u=v=x",
+      "plainLanguageExplanation": "It cannot be written as a genuine average of two distinct feasible points.",
+      "textbookSection": "2.8.3",
+      "textbookPage": 143
+    },
+    {
+      "id": "def-tight-constraint",
+      "unitId": "unit-07",
+      "title": "Tight (active) linear constraint",
+      "formalStatement": "At a feasible point x-bar, an inequality is tight when it holds with equality.",
+      "formalLatex": "a^{\\mathsf T}\\bar x=\\beta\\qquad\\text{for the constraint }a^{\\mathsf T}x\\le\\beta",
+      "plainLanguageExplanation": "The point lies on the boundary of that constraint's halfspace.",
+      "textbookSection": "2.8.3",
+      "textbookPage": 144
+    },
+
+    {
+      "id": "def-dual-linear-program",
+      "unitId": "unit-08",
+      "title": "Dual linear program",
+      "formalStatement": "The dual interchanges the roles of constraints and variables according to the primal–dual sign and sense table.",
+      "formalLatex": "\\begin{aligned}(P)&:\\max\\{c^{\\mathsf T}x:Ax=b,\\ x\\ge0\\},\\\\(D)&:\\min\\{b^{\\mathsf T}y:A^{\\mathsf T}y\\ge c,\\ y\\text{ free}\\}.\\end{aligned}",
+      "plainLanguageExplanation": "Each primal constraint creates one dual variable, and each primal variable creates one dual constraint.",
+      "textbookSection": "4.1",
+      "textbookPage": 219
+    },
+    {
+      "id": "def-primal-dual-pair",
+      "unitId": "unit-08",
+      "title": "Primal–dual pair",
+      "formalStatement": "Two LPs related by the dual-construction table are a primal–dual pair; each is the dual of the other.",
+      "plainLanguageExplanation": "Dualizing twice returns the original LP.",
+      "textbookSection": "4.1",
+      "textbookPage": 220
+    },
+
+    {
+      "id": "def-complementary-slackness-conditions",
+      "unitId": "unit-09",
+      "title": "Complementary slackness conditions",
+      "formalStatement": "For a feasible primal–dual pair, each variable is zero or its corresponding opposite-side constraint is tight.",
+      "formalLatex": "x_j\\big((A^{\\mathsf T}y)_j-c_j\\big)=0\\;\\forall j,\\qquad y_i\\big(b_i-(Ax)_i\\big)=0\\;\\forall i",
+      "plainLanguageExplanation": "A positive variable can be paired only with a tight corresponding constraint; the OR is inclusive.",
+      "textbookSection": "4.3.1",
+      "textbookPage": 238
+    },
+    {
+      "id": "def-generated-cone",
+      "unitId": "unit-09",
+      "title": "Cone generated by vectors",
+      "formalStatement": "The cone generated by vectors is the set of all their nonnegative linear combinations.",
+      "formalLatex": "\\operatorname{cone}\\{a^{(1)},\\ldots,a^{(k)}\\}=\\left\\{\\sum_{i=1}^k\\lambda_i a^{(i)}:\\lambda_i\\ge0\\right\\}",
+      "plainLanguageExplanation": "Coefficients may scale each generator outward but may not reverse it.",
+      "textbookSection": "4.3.2",
+      "textbookPage": 242
+    },
+    {
+      "id": "def-cone-tight-constraints",
+      "unitId": "unit-09",
+      "title": "Cone of tight constraints",
+      "formalStatement": "At x-bar in P={x:Ax≤b}, the cone of tight constraints is generated by the row normals of constraints tight at x-bar.",
+      "formalLatex": "J(\\bar x)=\\{i:\\operatorname{row}_i(A)\\bar x=b_i\\},\\qquad C(\\bar x)=\\operatorname{cone}\\{\\operatorname{row}_i(A)^{\\mathsf T}:i\\in J(\\bar x)\\}",
+      "plainLanguageExplanation": "It collects every nonnegative combination of the active constraint normals.",
+      "textbookSection": "4.3.2",
+      "textbookPage": 243
+    },
+
+    {
+      "id": "def-convex-hull",
+      "unitId": "unit-10",
+      "title": "Convex hull",
+      "formalStatement": "The convex hull of S is the smallest convex set containing S.",
+      "formalLatex": "\\operatorname{conv}(S)=\\left\\{\\sum_{i=1}^k\\lambda_i x^{(i)}:x^{(i)}\\in S,\\;\\lambda_i\\ge0,\\;\\sum_{i=1}^k\\lambda_i=1\\right\\}",
+      "plainLanguageExplanation": "It fills in every convex combination of points in S.",
+      "textbookSection": "6.1",
+      "textbookPage": 280
+    },
+    {
+      "id": "def-integer-hull",
+      "unitId": "unit-10",
+      "title": "Integer hull",
+      "formalStatement": "The integer hull is the convex hull of all integer-feasible points of an integer program.",
+      "formalLatex": "P_I=\\operatorname{conv}(P\\cap\\mathbb{Z}^n)",
+      "plainLanguageExplanation": "Optimizing over it gives the IP optimum using a convex feasible region, but describing it may be very hard.",
+      "textbookSection": "6.1",
+      "textbookPage": 280
+    },
+    {
+      "id": "def-lp-relaxation",
+      "unitId": "unit-10",
+      "title": "LP relaxation of an IP",
+      "formalStatement": "The LP relaxation is the linear program obtained by removing the integrality restrictions from an integer program.",
+      "formalLatex": "P\\cap\\mathbb{Z}^n\\subseteq P",
+      "plainLanguageExplanation": "It is easier to solve and contains every integer-feasible solution, plus possibly fractional points.",
+      "textbookSection": "6.2",
+      "textbookPage": 288
+    },
+    {
+      "id": "def-cutting-plane",
+      "unitId": "unit-10",
+      "title": "Cutting plane",
+      "formalStatement": "For a current fractional LP point x*, a cutting plane is an inequality valid for every IP-feasible point but violated by x*.",
+      "formalLatex": "a^{\\mathsf T}x\\le\\beta\\;\\forall x\\in P\\cap\\mathbb{Z}^n,\\qquad a^{\\mathsf T}x^*>\\beta",
+      "plainLanguageExplanation": "It removes the unwanted fractional point without removing any feasible integer solution.",
+      "textbookSection": "6.2",
+      "textbookPage": 288
+    },
+    {
+      "id": "def-relaxation",
+      "unitId": "unit-10",
+      "title": "Relaxation",
+      "formalStatement": "For two optimization problems with the same maximization objective over S1 and S2, the second is a relaxation of the first when S2 contains S1.",
+      "formalLatex": "S_1\\subseteq S_2\\quad\\Longrightarrow\\quad (P_2)\\text{ is a relaxation of }(P_1)",
+      "plainLanguageExplanation": "A relaxation enlarges the feasible region and therefore gives an upper bound for a maximization problem.",
+      "textbookSection": "6.2",
+      "textbookPage": 289
+    },
+
+    {
+      "id": "def-local-optimum",
+      "unitId": "unit-11",
+      "title": "Locally optimal solution",
+      "formalStatement": "A feasible point x-bar is locally optimal for a minimization NLP when it is no worse than every feasible point within some positive distance d.",
+      "formalLatex": "\\exists d>0\\;\\forall x\\in S:\\ \\lVert x-\\bar x\\rVert_2<d\\implies f(\\bar x)\\le f(x)",
+      "plainLanguageExplanation": "No nearby feasible point is better, though a distant one might be.",
+      "textbookSection": "7.3",
+      "textbookPage": 317
+    },
+    {
+      "id": "def-global-optimum",
+      "unitId": "unit-11",
+      "title": "Globally optimal solution",
+      "formalStatement": "A feasible point is globally optimal when no feasible point anywhere has a better objective value.",
+      "formalLatex": "f(\\bar x)\\le f(x)\\qquad\\forall x\\in S",
+      "plainLanguageExplanation": "It solves the full problem, not merely a neighborhood around the point.",
+      "textbookSection": "7.3",
+      "textbookPage": 318
+    },
+    {
+      "id": "def-convex-function",
+      "unitId": "unit-11",
+      "title": "Convex function",
+      "formalStatement": "A function is convex when its value at every convex combination is at most the same convex combination of endpoint values.",
+      "formalLatex": "f(\\lambda x^{(1)}+(1-\\lambda)x^{(2)})\\le\\lambda f(x^{(1)})+(1-\\lambda)f(x^{(2)}),\\quad\\lambda\\in[0,1]",
+      "plainLanguageExplanation": "The graph lies below every chord joining two points on the graph.",
+      "textbookSection": "7.3.1",
+      "textbookPage": 318
+    },
+    {
+      "id": "def-epigraph",
+      "unitId": "unit-11",
+      "title": "Epigraph",
+      "formalStatement": "The epigraph of a function is the set of points on or above its graph.",
+      "formalLatex": "\\operatorname{epi}(f)=\\{(\\mu,x)\\in\\mathbb{R}\\times\\mathbb{R}^n:f(x)\\le\\mu\\}",
+      "plainLanguageExplanation": "A function is convex exactly when its epigraph is a convex set.",
+      "textbookSection": "7.3.1",
+      "textbookPage": 320
+    },
+    {
+      "id": "def-level-set",
+      "unitId": "unit-11",
+      "title": "Level set",
+      "formalStatement": "For a function g and threshold beta, its level set contains the points where g is at most beta.",
+      "formalLatex": "L_\\beta(g)=\\{x\\in\\mathbb{R}^n:g(x)\\le\\beta\\}",
+      "plainLanguageExplanation": "A sublevel set of a convex function is convex.",
+      "textbookSection": "7.3.2",
+      "textbookPage": 322
+    },
+    {
+      "id": "def-convex-nlp",
+      "unitId": "unit-11",
+      "title": "Convex nonlinear program",
+      "formalStatement": "An NLP in the textbook minimization form is convex when its objective and every constraint function are convex.",
+      "formalLatex": "\\min f(x)\\quad\\text{s.t. }g_i(x)\\le0\\;(i=1,\\ldots,m),\\qquad f,g_1,\\ldots,g_m\\text{ convex}",
+      "plainLanguageExplanation": "Its feasible region is convex, and local optima are global under this structure.",
+      "textbookSection": "7.3.2",
+      "textbookPage": 324
+    },
+    {
+      "id": "def-tight-nlp-constraint",
+      "unitId": "unit-11",
+      "title": "Tight NLP constraint",
+      "formalStatement": "At a feasible point x-bar, the constraint g_j(x)≤0 is tight when g_j(x-bar)=0.",
+      "formalLatex": "g_j(\\bar x)=0",
+      "plainLanguageExplanation": "The point lies on the boundary described by that nonlinear inequality.",
+      "textbookSection": "7.4",
+      "textbookPage": 325
+    },
+    {
+      "id": "def-subgradient",
+      "unitId": "unit-11",
+      "title": "Subgradient",
+      "formalStatement": "For a convex function g, s is a subgradient at x-bar when the affine function through (x-bar,g(x-bar)) with slope s is a global lower bound on g.",
+      "formalLatex": "g(\\bar x)+s^{\\mathsf T}(x-\\bar x)\\le g(x)\\qquad\\forall x\\in\\mathbb{R}^n",
+      "plainLanguageExplanation": "It generalizes a gradient to convex functions that may not be differentiable.",
+      "textbookSection": "7.4.1",
+      "textbookPage": 326
+    },
+    {
+      "id": "def-supporting-halfspace",
+      "unitId": "unit-11",
+      "title": "Supporting halfspace",
+      "formalStatement": "A halfspace supports a convex set C at x-bar when it contains C and x-bar lies on its boundary hyperplane.",
+      "formalLatex": "F=\\{x:s^{\\mathsf T}x\\le\\beta\\},\\qquad C\\subseteq F,\\qquad s^{\\mathsf T}\\bar x=\\beta",
+      "plainLanguageExplanation": "It touches the set at the chosen point without cutting into the set.",
+      "textbookSection": "7.4.2",
+      "textbookPage": 327
+    },
+    {
+      "id": "def-tight-index-set",
+      "unitId": "unit-11",
+      "title": "Tight-constraint index set",
+      "formalStatement": "J(x-bar) is the set of indices of constraints that are tight at x-bar.",
+      "formalLatex": "J(\\bar x)=\\{i\\in\\{1,\\ldots,m\\}:g_i(\\bar x)=0\\}",
+      "plainLanguageExplanation": "KKT and geometric optimality use only the active constraint gradients.",
+      "textbookSection": "7.5.1",
+      "textbookPage": 331
+    },
+    {
+      "id": "def-differentiable",
+      "unitId": "unit-11",
+      "title": "Differentiable at a point",
+      "formalStatement": "A function is differentiable at x-bar if a vector s gives a first-order linear approximation whose error is negligible relative to the step length.",
+      "formalLatex": "\\lim_{h\\to0}\\frac{f(\\bar x+h)-f(\\bar x)-s^{\\mathsf T}h}{\\lVert h\\rVert_2}=0",
+      "plainLanguageExplanation": "Near x-bar, the function is approximated by an affine function with slope vector s.",
+      "textbookSection": "7.5.2",
+      "textbookPage": 332
+    },
+    {
+      "id": "def-gradient",
+      "unitId": "unit-11",
+      "title": "Gradient",
+      "formalStatement": "When f is differentiable at x-bar, the unique vector s in its differentiability condition is the gradient of f at x-bar.",
+      "formalLatex": "s=\\nabla f(\\bar x)=\\left[\\frac{\\partial f}{\\partial x_1}(\\bar x),\\ldots,\\frac{\\partial f}{\\partial x_n}(\\bar x)\\right]^{\\mathsf T}",
+      "plainLanguageExplanation": "It collects the first partial derivatives and is the subgradient of a differentiable convex function.",
+      "textbookSection": "7.5.2",
+      "textbookPage": 332
+    },
+    {
+      "id": "def-slater-point",
+      "unitId": "unit-11",
+      "title": "Slater point",
+      "formalStatement": "An NLP has a Slater point when there is a point that satisfies every inequality constraint strictly.",
+      "formalLatex": "\\exists x'\\in\\mathbb{R}^n\\quad\\text{s.t.}\\quad g_i(x')<0\\qquad i=1,\\ldots,m",
+      "plainLanguageExplanation": "It is a strictly feasible point and is the regularity assumption used by the course KKT theorem.",
+      "textbookSection": "7.5.3",
+      "textbookPage": 333
+    },
+    {
+      "id": "def-algorithm",
+      "unitId": "unit-01",
+      "title": "Algorithm",
+      "formalStatement": "An algorithm is a finite procedure that takes the formulation as input and returns an assignment satisfying the constraints and optimizing the objective when such an assignment exists.",
+      "plainLanguageExplanation": "It is the step-by-step computational method used to solve the mathematical model.",
+      "textbookSection": "1.1",
+      "textbookPage": 17
+    },
+    {
+      "id": "def-word-description",
+      "unitId": "unit-01",
+      "title": "Word description",
+      "formalStatement": "The word description is the plain-language statement of the real optimization problem.",
+      "plainLanguageExplanation": "It is the original problem that the mathematical formulation must represent faithfully.",
+      "textbookSection": "1.1.2",
+      "textbookPage": 20
+    },
+    {
+      "id": "def-word-description-solution",
+      "unitId": "unit-01",
+      "title": "Solution to the word description",
+      "formalStatement": "A solution to the word description is a choice for its unknown quantities; it is feasible when it satisfies every real-world constraint.",
+      "plainLanguageExplanation": "Correct formulation requires a correspondence between these real decisions and the formulation's feasible solutions.",
+      "textbookSection": "1.1.2",
+      "textbookPage": 20
+    },
+    {
+      "id": "def-quadratic-optimization",
+      "unitId": "unit-02",
+      "title": "Quadratic optimization problem",
+      "formalStatement": "A quadratic optimization problem has a quadratic objective and linear constraints.",
+      "formalLatex": "\\min\\{x^{\\mathsf T}Qx+c^{\\mathsf T}x+z_0:Ax\\le b\\}",
+      "plainLanguageExplanation": "It is a structured nonlinear program commonly used for squared error, variance, and risk.",
+      "textbookSection": "1.6",
+      "textbookPage": 74
+    },
+    {
+      "id": "def-certificate",
+      "unitId": "unit-03",
+      "title": "Certificate",
+      "formalStatement": "A certificate is a compact mathematical object whose stated relations can be checked to verify a claimed optimization outcome.",
+      "plainLanguageExplanation": "It turns a solver's answer into a short proof that another person can independently verify.",
+      "textbookSection": "2.1.1–2.1.3",
+      "textbookPage": 82
+    },
+    {
+      "id": "def-equivalent-linear-programs",
+      "unitId": "unit-04",
+      "title": "Equivalent linear programs",
+      "formalStatement": "Two LPs are equivalent when infeasibility and unboundedness agree in both directions and an optimal solution of either can be converted into an optimal solution of the other.",
+      "plainLanguageExplanation": "Converting to SEF may change the variables and equations without changing the mathematical outcome.",
+      "textbookSection": "2.2",
+      "textbookPage": 88
+    },
+    {
+      "id": "def-tableau-representation",
+      "unitId": "unit-05",
+      "title": "Tableau representation",
+      "formalStatement": "A simplex tableau is the augmented matrix that represents both the objective equation and the equality constraints of an SEF LP.",
+      "plainLanguageExplanation": "It stores the current canonical equations in a form suited to pivot operations.",
+      "textbookSection": "2.7.2",
+      "textbookPage": 136
+    },
+    {
+      "id": "def-augmented-matrix",
+      "unitId": "unit-06",
+      "title": "Augmented matrix",
+      "formalStatement": "The augmented matrix representing Ax=b is formed by adjoining b as an extra column of A.",
+      "formalLatex": "T=(A\\mid b)",
+      "plainLanguageExplanation": "Row operations on this matrix produce equivalent systems of equations.",
+      "textbookSection": "2.7.1",
+      "textbookPage": 135
+    },
+    {
+      "id": "def-constraint-slack",
+      "unitId": "unit-07",
+      "title": "Slack of a linear constraint",
+      "formalStatement": "At a feasible point x, the slack of a ≤ constraint is its right-hand side minus its left-hand side.",
+      "formalLatex": "\\operatorname{slack}_i(x)=b_i-\\operatorname{row}_i(A)x\\ge0",
+      "plainLanguageExplanation": "The slack is zero exactly when the constraint is tight.",
+      "textbookSection": "2.8.5",
+      "textbookPage": 149
+    }
+  ]
+}
