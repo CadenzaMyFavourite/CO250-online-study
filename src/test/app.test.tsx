@@ -7,6 +7,7 @@ import { LibraryPage } from '../pages/LibraryPage'
 import { PracticePage } from '../pages/PracticePage'
 import { StartDiagnosticPage } from '../pages/StartDiagnosticPage'
 import { NotationPage } from '../pages/NotationPage'
+import { getSeoMetadata } from '../components/Seo'
 import { course, libraryItems } from '../data/course'
 import { extendExamTimer, getExamRemainingSeconds, pauseExamTimer, resumeExamTimer, type ExamSession } from '../lib/progress'
 
@@ -123,6 +124,17 @@ describe('CO 250 Field Guide', () => {
   it('attaches TeX to every formal result and practice answer', () => {
     expect(course.units.flatMap((unit) => unit.theorems).every((theorem) => Boolean(theorem.formalLatex))).toBe(true)
     expect(course.questions.every((question) => Boolean(question.finalAnswerLatex))).toBe(true)
+  })
+
+  it('publishes descriptive SEO metadata for searchable course pages', () => {
+    expect(getSeoMetadata('/').title).toContain('CO250 Study Guide')
+    expect(getSeoMetadata('/notation').description).toContain('matrix notation')
+    expect(getSeoMetadata('/topic/two-phase-simplex')).toMatchObject({
+      canonicalPath: '/topic/two-phase-simplex',
+      index: true,
+      kind: 'article',
+    })
+    expect(getSeoMetadata('/progress').index).toBe(false)
   })
 
   it('adds textbook-style matrix data to the two-phase examples', () => {

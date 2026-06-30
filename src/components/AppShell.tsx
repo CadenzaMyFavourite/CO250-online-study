@@ -14,6 +14,7 @@ import {
   X,
 } from 'lucide-react'
 import { NavLink, Outlet } from 'react-router-dom'
+import { Seo } from './Seo'
 
 const navigation = [
   { to: '/', label: 'Dashboard', icon: Home, end: true },
@@ -31,6 +32,7 @@ export function AppShell() {
 
   return (
     <div className="app-shell">
+      <Seo />
       <a className="skip-link" href="#main-content">Skip to content</a>
       <header className="mobile-header">
         <NavLink to="/" className="mobile-brand">CO 250 / FIELD GUIDE</NavLink>
