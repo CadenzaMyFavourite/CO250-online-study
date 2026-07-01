@@ -69,7 +69,7 @@ export function AppShell() {
         <footer className="site-footer">
           <strong>Created by Jackie Zou</strong>
           <span>Questions, corrections, or site issues are welcome.</span>
-          <div><a href="mailto:zjiaqi1214@gmail.com">Email</a><a href="https://www.linkedin.com/in/jackie-zou-652084382/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/CadenzaMyFavourite/CO250-online-study/issues" target="_blank" rel="noreferrer">GitHub Issues</a></div>
+          <div className="site-footer-links"><a href="mailto:zjiaqi1214@gmail.com">Email</a><a href="https://www.linkedin.com/in/jackie-zou-652084382/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/CadenzaMyFavourite/CO250-online-study/issues" target="_blank" rel="noreferrer">GitHub Issues</a></div>
         </footer>
       </main>
     </div>
