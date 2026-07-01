@@ -3,6 +3,7 @@ import { ArrowRight, CircleAlert } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { SourceReferences } from '../components/SourceReferences'
 import { Latex } from '../components/Latex'
+import { ConceptVisual } from '../components/ConceptVisual'
 import { course, unitBySlug } from '../data/course'
 
 type Tab = 'overview' | 'definitions' | 'results' | 'procedure' | 'mistakes' | 'sources'
@@ -41,6 +42,7 @@ export function TopicPage() {
             <Link className="beginner-practice-link beginner-practice-link--secondary" to="/notation">Need help reading the symbols?</Link>
           </section>
         ) : null}
+        <ConceptVisual slug={unit.slug} />
         <section className="reading-section">
           <h2>{unit.procedures[0]?.name ?? 'What this unit establishes'}</h2>
           {unit.procedures[0] ? (

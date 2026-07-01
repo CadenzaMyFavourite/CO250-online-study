@@ -9,6 +9,7 @@ import { StartDiagnosticPage } from '../pages/StartDiagnosticPage'
 import { NotationPage } from '../pages/NotationPage'
 import { MaterialsPage } from '../pages/MaterialsPage'
 import { getSeoMetadata } from '../components/Seo'
+import { ConceptVisual } from '../components/ConceptVisual'
 import { course, libraryItems } from '../data/course'
 
 afterEach(cleanup)
@@ -127,5 +128,12 @@ describe('CO 250 Field Guide', () => {
     expect(phaseUnit?.workedExamples).toHaveLength(2)
     expect(phaseUnit?.workedExamples?.[0].matrixView?.latex).toContain('[A\\ I]')
     expect(phaseUnit?.workedExamples?.[1].matrixView?.plainLanguage).toMatch(/auxiliary identity block/i)
+  })
+
+  it('provides an accessible concept visualization for every unit', () => {
+    render(<>{course.units.map((unit) => <ConceptVisual key={unit.id} slug={unit.slug} />)}</>)
+    expect(screen.getAllByRole('img')).toHaveLength(course.units.length)
+    expect(screen.getByRole('heading', { name: 'Simplex walks along improving edges' })).toBeInTheDocument()
+    expect(screen.getByText(/unused resource means zero shadow price/i)).toBeInTheDocument()
   })
 })
