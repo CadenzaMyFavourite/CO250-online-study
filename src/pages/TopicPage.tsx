@@ -1,10 +1,9 @@
 import { useMemo, useState } from 'react'
-import { ArrowRight, Check, CircleAlert } from 'lucide-react'
+import { ArrowRight, CircleAlert } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { SourceReferences } from '../components/SourceReferences'
 import { Latex } from '../components/Latex'
 import { course, unitBySlug } from '../data/course'
-import { markTopicComplete, useProgress } from '../lib/progress'
 
 type Tab = 'overview' | 'definitions' | 'results' | 'procedure' | 'mistakes' | 'sources'
 
@@ -21,8 +20,6 @@ export function TopicPage() {
   const { slug = '' } = useParams()
   const unit = unitBySlug.get(slug)
   const [tab, setTab] = useState<Tab>('overview')
-  const progress = useProgress()
-  const complete = unit ? progress.completedTopics.includes(unit.id) : false
   const questions = useMemo(() => (unit ? course.questions.filter((question) => question.unitId === unit.id) : []), [unit])
 
   if (!unit) return <Navigate to="/course-map" replace />
@@ -169,9 +166,6 @@ export function TopicPage() {
           <div className="topic-source-line">{unit.sourceReferences.map((reference) => reference.fileName.replace('.pdf', '')).join(' · ')}</div>
           <div className="button-row">
             {questions.length ? <Link className="button button--primary" to={`/practice?unit=${unit.id}`}>Practice this topic</Link> : null}
-            <button className={complete ? 'button button--quiet button--done' : 'button button--quiet'} onClick={() => markTopicComplete(unit.id)}>
-              <Check aria-hidden="true" size={17} /> {complete ? 'Marked complete' : 'Mark topic complete'}
-            </button>
           </div>
         </header>
         <div className="topic-tabs" role="tablist" aria-label="Topic sections">

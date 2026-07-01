@@ -7,22 +7,21 @@ import { LibraryPage } from '../pages/LibraryPage'
 import { PracticePage } from '../pages/PracticePage'
 import { StartDiagnosticPage } from '../pages/StartDiagnosticPage'
 import { NotationPage } from '../pages/NotationPage'
+import { MaterialsPage } from '../pages/MaterialsPage'
 import { getSeoMetadata } from '../components/Seo'
 import { course, libraryItems } from '../data/course'
-import { extendExamTimer, getExamRemainingSeconds, pauseExamTimer, resumeExamTimer, type ExamSession } from '../lib/progress'
 
 afterEach(cleanup)
 
 describe('CO 250 Field Guide', () => {
   beforeEach(() => {
-    window.localStorage.clear()
     window.history.pushState({}, '', '/')
   })
 
   it('renders a real empty dashboard before practice data exists', () => {
     render(<MemoryRouter><DashboardPage /></MemoryRouter>)
     expect(screen.getByRole('heading', { name: /build the model/i })).toBeInTheDocument()
-    expect(screen.getByText('No practice recorded yet')).toBeInTheDocument()
+    expect(screen.getByText(/questions and answers are available without an account/i)).toBeInTheDocument()
     expect(screen.getByText('89 textbook definitions · 40 practice questions')).toBeInTheDocument()
     expect(screen.queryByText(/% accuracy/i)).not.toBeInTheDocument()
   })
@@ -78,34 +77,12 @@ describe('CO 250 Field Guide', () => {
     expect(screen.getByText(/returns the point or points that achieve the smallest value/i)).toBeInTheDocument()
   })
 
-  it('persists exam draft answers across a reload', () => {
+  it('builds a stateless question set and reveals its answer', () => {
     render(<MemoryRouter><ExamPage /></MemoryRouter>)
-    fireEvent.click(screen.getByRole('button', { name: 'Build exam' }))
-    const firstAnswer = screen.getByRole('textbox', { name: 'Answer for question 1' })
-    fireEvent.change(firstAnswer, { target: { value: 'My local draft' } })
-    cleanup()
-
-    render(<MemoryRouter><ExamPage /></MemoryRouter>)
-    expect(screen.getByRole('textbox', { name: 'Answer for question 1' })).toHaveValue('My local draft')
-  })
-
-  it('pauses, resumes, and extends the persisted exam clock', () => {
-    const session: ExamSession = {
-      id: 'timer-test',
-      questionIds: [],
-      timeLimitMinutes: 1,
-      startedAt: '2026-01-01T00:00:00.000Z',
-      endsAt: '2026-01-01T00:01:00.000Z',
-      answers: {},
-    }
-    expect(getExamRemainingSeconds(session, Date.parse('2026-01-01T00:00:15.000Z'))).toBe(45)
-    const paused = pauseExamTimer(session, '2026-01-01T00:00:15.000Z')
-    expect(getExamRemainingSeconds(paused, Date.parse('2026-01-01T00:00:45.000Z'))).toBe(45)
-    const resumed = resumeExamTimer(paused, '2026-01-01T00:00:45.000Z')
-    expect(getExamRemainingSeconds(resumed, Date.parse('2026-01-01T00:00:45.000Z'))).toBe(45)
-    expect(getExamRemainingSeconds(extendExamTimer(resumed, 15, Date.parse('2026-01-01T00:00:45.000Z')), Date.parse('2026-01-01T00:00:45.000Z'))).toBe(945)
-    const expired = { ...session, endsAt: '2025-12-31T23:59:00.000Z' }
-    expect(getExamRemainingSeconds(extendExamTimer(expired, 15, Date.parse('2026-01-01T00:00:00.000Z')), Date.parse('2026-01-01T00:00:00.000Z'))).toBe(900)
+    fireEvent.click(screen.getByRole('button', { name: 'Create question set' }))
+    expect(screen.getByRole('heading', { name: 'CO250 question set' })).toBeInTheDocument()
+    fireEvent.click(screen.getAllByRole('button', { name: 'Reveal answer' })[0])
+    expect(screen.getByText('Final answer')).toBeInTheDocument()
   })
 
   it('loads the textbook-first definition and worked-example coverage', () => {
@@ -134,7 +111,15 @@ describe('CO 250 Field Guide', () => {
       index: true,
       kind: 'article',
     })
-    expect(getSeoMetadata('/progress').index).toBe(false)
+    expect(getSeoMetadata('/materials')).toMatchObject({ index: true, canonicalPath: '/materials' })
+    expect(getSeoMetadata('/exam').index).toBe(true)
+  })
+
+  it('publishes all supplied PDF materials with contact details', () => {
+    render(<MemoryRouter><MaterialsPage /></MemoryRouter>)
+    expect(screen.getAllByRole('link', { name: /^Open / })).toHaveLength(18)
+    expect(screen.getByRole('link', { name: 'zjiaqi1214@gmail.com' })).toHaveAttribute('href', 'mailto:zjiaqi1214@gmail.com')
+    expect(screen.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute('href', 'https://www.linkedin.com/in/jackie-zou-652084382/')
   })
 
   it('adds textbook-style matrix data to the two-phase examples', () => {

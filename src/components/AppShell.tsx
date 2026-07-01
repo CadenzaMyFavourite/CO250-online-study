@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import {
-  BarChart3,
   BookOpen,
   ClipboardList,
   FileText,
   Home,
-  Laptop,
+  FolderOpen,
+  Mail,
   Map,
   Menu,
   PencilLine,
@@ -23,8 +23,8 @@ const navigation = [
   { to: '/notation', label: 'Notation guide', icon: Sigma },
   { to: '/procedures', label: 'Procedures', icon: ClipboardList },
   { to: '/practice', label: 'Practice', icon: PencilLine },
-  { to: '/exam', label: 'Exam builder', icon: FileText },
-  { to: '/progress', label: 'Progress', icon: BarChart3 },
+  { to: '/exam', label: 'Question sets', icon: FileText },
+  { to: '/materials', label: 'PDF materials', icon: FolderOpen },
 ]
 
 export function AppShell() {
@@ -61,14 +61,16 @@ export function AppShell() {
           Search the field guide
           <kbd>/</kbd>
         </NavLink>
-        <div className="local-note">
-          <Laptop aria-hidden="true" size={21} strokeWidth={1.6} />
-          <span>Stored on this device</span>
-        </div>
+        <a className="local-note" href="mailto:zjiaqi1214@gmail.com"><Mail aria-hidden="true" size={21} strokeWidth={1.6} /><span>Contact Jackie Zou</span></a>
       </aside>
       {menuOpen ? <button className="sidebar-scrim" aria-label="Close navigation" onClick={() => setMenuOpen(false)} /> : null}
       <main id="main-content" className="main-content" tabIndex={-1}>
         <Outlet />
+        <footer className="site-footer">
+          <strong>Created by Jackie Zou</strong>
+          <span>Questions, corrections, or site issues are welcome.</span>
+          <div><a href="mailto:zjiaqi1214@gmail.com">Email</a><a href="https://www.linkedin.com/in/jackie-zou-652084382/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/CadenzaMyFavourite/CO250-online-study/issues" target="_blank" rel="noreferrer">GitHub Issues</a></div>
+        </footer>
       </main>
     </div>
   )

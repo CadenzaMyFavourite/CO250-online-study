@@ -159,27 +159,3 @@ export type CourseContent = {
   units: Unit[]
   questions: PracticeQuestion[]
 }
-
-export type MistakeType =
-  | 'definition'
-  | 'recognition'
-  | 'wrong-theorem'
-  | 'missed-assumption'
-  | 'algebra'
-  | 'algorithm'
-  | 'proof-gap'
-  | 'misread'
-  | 'time'
-  | 'other'
-
-export type Attempt = {
-  id: string
-  questionId: string
-  unitId: string
-  correct: boolean
-  hintsUsed: number
-  confidence: number
-  mistakeType?: MistakeType
-  secondsSpent: number
-  completedAt: string
-}

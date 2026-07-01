@@ -1,22 +1,16 @@
-# CO 250 / Field Guide
+# CO250 Field Guide
 
-A static, local-first study platform derived from the CO 250 PDFs in `materials/`. It organizes the supplied course into 11 units, makes source references visible, supports guided and mixed practice, builds local exams, and stores learning progress only in the browser. The public site contains the learning content but does not publish the source PDFs.
+A static CO250 study platform derived from the supplied course PDFs. It organizes the course into 11 units, makes source references visible, supports guided practice and question sets, and publishes the open course materials without requiring an account or backend.
 
 ## Privacy model
 
-- No student account, advertising, or third-party tracking. The public deployment uses Vercel Web Analytics for anonymized, cookie-free page-view analytics.
-- Course materials are read only by the local inventory script.
-- PDFs are excluded from Git by `.gitignore`.
-- Progress is stored under `co250-field-guide-progress-v1` in browser `localStorage`.
-- Exam state is stored under `co250-field-guide-exam-v1`.
-
-## Prerequisites
-
-- Node.js 20+ and pnpm 9+
-- Python 3.11+ for ingestion and deterministic content tests
-- `pypdf` from `requirements.txt`
+- No student account or advertising. Vercel Web Analytics provides anonymized, cookie-free page-view analytics.
+- The source folder `/materials/` remains excluded; approved public copies are served from `/public/materials/`.
+- Practice notes exist only in current React state. The site does not save progress, answers, or question sets.
 
 ## Install and run
+
+Requires Node.js 20+, pnpm 9+, Python 3.11+, and the packages in `requirements.txt`.
 
 ```powershell
 pnpm install
@@ -24,54 +18,44 @@ python -m pip install -r requirements.txt
 pnpm dev
 ```
 
-Open the local URL printed by Vite (normally `http://127.0.0.1:5173`).
-
 ## Deploy to Vercel
 
-This is a client-only Vite application. It requires no database, API, environment variables, or Vercel Functions.
+This is a client-only Vite application with no database, API, environment variables, or Vercel Functions.
 
 1. Import `CadenzaMyFavourite/CO250-online-study` in Vercel.
-2. Keep the detected framework as **Vite**.
-3. Use `pnpm build` as the build command and `dist` as the output directory. Vercel can use its automatic pnpm install command.
+2. Keep the framework as **Vite**.
+3. Use `pnpm build` and output directory `dist`.
 4. Deploy the `main` branch.
 
-The root `vercel.json` rewrites application routes to `index.html`, so direct visits and browser refreshes work on routes such as `/topic/two-phase-simplex`. Future pushes to `main` create production deployments automatically after the Git integration is connected.
+`vercel.json` rewrites application routes to `index.html`, so direct visits and refreshes work. Future pushes to `main` deploy automatically. Vercel Web Analytics is integrated through `@vercel/analytics/react`.
 
-Study progress and exam drafts remain in `localStorage`. They survive refreshes in the same browser, but do not synchronize between devices or browser profiles.
-
-Vercel Web Analytics is integrated through `@vercel/analytics/react`. Enable Web Analytics in the Vercel project dashboard; its collection route becomes active on the next deployment.
-
-## Commands
+## Quality commands
 
 ```powershell
-pnpm build
-pnpm test
 pnpm validate
+pnpm test -- --run
 python -m unittest discover backend/tests
-python scripts/inventory_sources.py
+pnpm build
 ```
 
 ## Add or update course materials
 
-1. Put private PDFs in `materials/`. Do not commit that directory.
+1. Put source PDFs in `materials/`; this working folder is not committed.
 2. Run `python scripts/inventory_sources.py`.
 3. Review `data/source-index.json` for page counts, extraction quality, and duplicates.
-4. Render and inspect equation-heavy or handwritten pages before adding content.
-5. Add textbook definitions to `data/course-definitions.json`; add worked examples to `data/course-examples.json`; add their textbook-style matrix translations to `data/course-matrices.json`; add definition questions to `data/definition-practice.json`; add results, procedures, or other questions to `data/course-content.json`.
-6. Add or update result/practice TeX mappings in `data/course-math.json`.
-7. Run the content/math validator and tests.
-8. Update `docs/CONTENT_COVERAGE.md`.
-
-The inventory script records metadata and hashes only. It does not copy PDF text into tracked source data.
+4. Render and inspect equation-heavy or handwritten pages.
+5. Update the relevant course JSON and TeX mappings.
+6. Copy approved public PDFs to `public/materials/`.
+7. Run all validation and tests.
 
 ## Grounding model
 
-`data/course-definitions.json` is the textbook-first authority for the 89 course definitions and records a textbook section plus PDF page for each item. Theorem-like results, procedures, and questions in `data/course-content.json` have source references. Generated questions are labelled `generated` and record their validation method/status. TeX is checked with strict KaTeX parsing by `pnpm validate`.
+`data/course-definitions.json` is the textbook-first authority for the 89 course definitions and records a textbook section and PDF page for each item. Theorem-like results, procedures, and questions have source references. Generated questions record their validation method and status. TeX is checked with strict KaTeX parsing by `pnpm validate`.
 
-## Reset progress
+## Contact
 
-Use **Progress → Reset progress**, or clear this site’s local storage in the browser.
+Corrections and suggestions are welcome: Jackie Zou at `zjiaqi1214@gmail.com`, [LinkedIn](https://www.linkedin.com/in/jackie-zou-652084382/), or [GitHub Issues](https://github.com/CadenzaMyFavourite/CO250-online-study/issues).
 
 ## Known limitations
 
-Definitions, formal mathematics, two worked examples, a plain-language first-read guide, and at least three practice questions now span all 11 units. Every worked example includes a matrix lens with dimensions and a beginner reading. A short self-check recommends the first missing prerequisite, beginner mode guarantees at least two level 1–2 questions per unit, and the notation guide translates 21 common expressions into spoken and plain language. The remaining gap is practice breadth toward five questions per unit. See the [definition audit](docs/DEFINITION_AUDIT.md) and [known limitations](docs/KNOWN_LIMITATIONS.md).
+Definitions, formal mathematics, two worked examples, a plain-language first-read guide, and at least three practice questions span all 11 units. Every worked example includes a matrix lens with dimensions and a beginner reading. The remaining gap is practice breadth toward five questions per unit. See the [definition audit](docs/DEFINITION_AUDIT.md) and [known limitations](docs/KNOWN_LIMITATIONS.md).

@@ -58,15 +58,15 @@ const pageMetadata: Record<string, Omit<SeoMetadata, 'canonicalPath'>> = {
     kind: 'website',
   },
   '/exam': {
-    title: 'CO250 Local Exam Builder',
-    description: 'Build a private CO250 practice exam stored only in this browser.',
-    index: false,
+    title: 'CO250 Question Set Builder | Practice with Answers',
+    description: 'Build a CO250 practice question set by topic, then reveal detailed answers and textbook-grounded solutions without an account.',
+    index: true,
     kind: 'website',
   },
-  '/progress': {
-    title: 'CO250 Local Study Progress',
-    description: 'Review private CO250 study progress stored only in this browser.',
-    index: false,
+  '/materials': {
+    title: 'CO250 Course PDFs | Textbook, Reviews and Practice Exams',
+    description: 'Browse the open CO250 textbook, course review sheets, practice exams, and source PDFs used by this study guide.',
+    index: true,
     kind: 'website',
   },
 }

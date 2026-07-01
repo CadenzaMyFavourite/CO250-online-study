@@ -1,12 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ArrowRight, CheckCircle2, Lightbulb, RotateCcw } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PageHeader } from '../components/PageHeader'
 import { Latex } from '../components/Latex'
 import { SourceReferences } from '../components/SourceReferences'
 import { course, unitById } from '../data/course'
-import { mistakeLabels, recordAttempt } from '../lib/progress'
-import type { MistakeType } from '../types/content'
 
 export function PracticePage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -17,11 +15,6 @@ export function PracticePage() {
   const [hintsShown, setHintsShown] = useState(0)
   const [solutionShown, setSolutionShown] = useState(false)
   const [scratch, setScratch] = useState('')
-  const [confidence, setConfidence] = useState(3)
-  const [correct, setCorrect] = useState<boolean | null>(null)
-  const [mistake, setMistake] = useState<MistakeType | ''>('')
-  const [saved, setSaved] = useState(false)
-  const startedAt = useRef(Date.now())
 
   const filtered = useMemo(() => course.questions.filter((question) =>
     (unitId === 'all' || question.unitId === unitId) &&
@@ -37,8 +30,6 @@ export function PracticePage() {
     setHintsShown(0)
     setSolutionShown(false)
     setScratch('')
-    setSaved(false)
-    startedAt.current = Date.now()
     if (unitId === 'all') {
       searchParams.delete('unit')
     } else {
@@ -56,30 +47,11 @@ export function PracticePage() {
     setHintsShown(0)
     setSolutionShown(false)
     setScratch('')
-    setConfidence(3)
-    setCorrect(null)
-    setMistake('')
-    setSaved(false)
-    startedAt.current = Date.now()
   }
 
   const nextQuestion = () => {
     setIndex((current) => (current + 1) % filtered.length)
     resetQuestionState()
-  }
-
-  const save = () => {
-    if (!question || correct === null) return
-    recordAttempt({
-      questionId: question.id,
-      unitId: question.unitId,
-      correct,
-      hintsUsed: hintsShown,
-      confidence,
-      mistakeType: !correct && mistake ? mistake : undefined,
-      secondsSpent: Math.max(1, Math.round((Date.now() - startedAt.current) / 1000)),
-    })
-    setSaved(true)
   }
 
   return (
@@ -137,11 +109,8 @@ export function PracticePage() {
 
             {solutionShown ? (
               <section className="reflection-panel">
-                <h3>Record this attempt</h3>
-                <fieldset><legend>Was your answer correct?</legend><label><input type="radio" name="correct" checked={correct === true} onChange={() => setCorrect(true)} /> Yes</label><label><input type="radio" name="correct" checked={correct === false} onChange={() => setCorrect(false)} /> Not yet</label></fieldset>
-                <label><span>Confidence · {confidence}/5</span><input type="range" min="1" max="5" value={confidence} onChange={(event) => setConfidence(Number(event.target.value))} /></label>
-                {correct === false ? <label><span>What went wrong?</span><select value={mistake} onChange={(event) => setMistake(event.target.value as MistakeType)}><option value="">Choose a category</option>{Object.entries(mistakeLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label> : null}
-                {saved ? <div className="save-confirmation"><CheckCircle2 aria-hidden="true" /> Attempt saved locally</div> : <button className="button button--primary button--full" disabled={correct === null || (correct === false && !mistake)} onClick={save}>Save attempt</button>}
+                <h3>Check your reasoning</h3>
+                <p>Compare each step with the detailed solution. Nothing is saved or scored.</p>
               </section>
             ) : null}
             <button className="next-question" disabled={filtered.length < 2} onClick={nextQuestion}><span>Next question</span><ArrowRight aria-hidden="true" /></button>

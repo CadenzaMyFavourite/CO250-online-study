@@ -9,9 +9,9 @@ const LibraryPage = lazy(() => import('./pages/LibraryPage').then((module) => ({
 const ProceduresPage = lazy(() => import('./pages/ProceduresPage').then((module) => ({ default: module.ProceduresPage })))
 const PracticePage = lazy(() => import('./pages/PracticePage').then((module) => ({ default: module.PracticePage })))
 const ExamPage = lazy(() => import('./pages/ExamPage').then((module) => ({ default: module.ExamPage })))
-const ProgressPage = lazy(() => import('./pages/ProgressPage').then((module) => ({ default: module.ProgressPage })))
 const StartDiagnosticPage = lazy(() => import('./pages/StartDiagnosticPage').then((module) => ({ default: module.StartDiagnosticPage })))
 const NotationPage = lazy(() => import('./pages/NotationPage').then((module) => ({ default: module.NotationPage })))
+const MaterialsPage = lazy(() => import('./pages/MaterialsPage').then((module) => ({ default: module.MaterialsPage })))
 
 const router = createBrowserRouter([
   {
@@ -25,9 +25,9 @@ const router = createBrowserRouter([
       { path: 'procedures', element: <ProceduresPage /> },
       { path: 'practice', element: <PracticePage /> },
       { path: 'exam', element: <ExamPage /> },
-      { path: 'progress', element: <ProgressPage /> },
       { path: 'start', element: <StartDiagnosticPage /> },
       { path: 'notation', element: <NotationPage /> },
+      { path: 'materials', element: <MaterialsPage /> },
     ],
   },
 ])

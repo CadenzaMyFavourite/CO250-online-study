@@ -1,4 +1,4 @@
-materials/
+/materials/
 node_modules/
 dist/
 coverage/
